@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Todo API', type: :request do
+RSpec.describe 'Projects API', type: :request do
   let!(:projects)  { create_list(:project, 10) }
   let(:project_id) { projects.first.id }
 

@@ -17,14 +17,13 @@ ActiveRecord::Schema.define(version: 2018_10_22_091852) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
-    t.string "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
