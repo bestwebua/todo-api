@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.permit(:title, :created_by)
+      params.permit(:title)
     end
 
     def init_project
