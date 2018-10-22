@@ -45,7 +45,7 @@ RSpec.describe 'Todo API', type: :request do
   end
 
   describe 'POST /projects' do
-    let(:valid_attributes) { { title: 'Project Title', created_by: '1' } }
+    let(:valid_attributes) { { title: 'Project Title' } }
 
     context 'request is valid' do
       before { post '/projects', params: valid_attributes }
@@ -60,14 +60,14 @@ RSpec.describe 'Todo API', type: :request do
     end
 
     context 'request is invalid' do
-      before { post '/projects', params: { title: 'Ololo' } }
+      before { post '/projects', params: { unknown_param: 'Ololo' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
       end
 
       it 'returns a validation failure message' do
-        expect(response.body).to match(/Validation failed: Created by can't be blank/)
+        expect(response.body).to match(/Validation failed: Title can't be blank/)
       end
     end
   end
