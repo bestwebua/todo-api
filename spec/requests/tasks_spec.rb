@@ -59,7 +59,7 @@ RSpec.describe 'Tasks API', type: :request do
   end
 
   describe 'PUT /projects/:project_id/tasks/:id' do
-    let(:valid_attributes) { { name: 'Task Name' } }
+    let(:valid_attributes) { { name: 'Task Name', deadline: Time.now } }
 
     before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes }
 
