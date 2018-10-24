@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :task do
-    name { Faker::StarWars.character }
+    name { Faker::Lorem.unique.word }
     done { false }
     deadline { nil }
-    project_id { nil }
+    project
   end
 end

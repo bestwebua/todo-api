@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Projects API', type: :request do
+  let!(:user)      { create :user }
   let!(:projects)  { create_list(:project, 10) }
   let(:project_id) { projects.first.id }
 
