@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Auth::AuthorizeApiRequestService do
+RSpec.describe Auth::AuthorizeRequestService do
   let(:user)                    { create :user }
   let(:header)                  { { 'Authorization' => token_generator(user.id) } }
   subject(:invalid_request_obj) { described_class.call }

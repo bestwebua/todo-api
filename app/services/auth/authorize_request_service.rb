@@ -1,5 +1,5 @@
 module Auth
-  class AuthorizeApiRequestService
+  class AuthorizeRequestService
     def initialize(headers = {})
       @headers = headers
     end
