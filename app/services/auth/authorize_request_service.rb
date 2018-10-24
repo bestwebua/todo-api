@@ -9,7 +9,7 @@ module Auth
     end
 
     def self.call(headers = {})
-      self.new(headers).call
+      new(headers).call
     end
 
     private

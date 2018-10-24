@@ -6,7 +6,7 @@ RSpec.describe Auth::AuthorizeRequestService do
   subject(:invalid_request_obj) { described_class.call }
   subject(:request_obj)         { described_class.call(header) }
 
-  describe '#call' do
+  describe '.call' do
     context 'valid request' do
       it 'returns user object' do
         expect(request_obj[:user]).to eq(user)
