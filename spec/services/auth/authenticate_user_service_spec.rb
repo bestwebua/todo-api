@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Auth::AuthenticateUserService do
   let(:user)                 { create :user }
-  subject(:valid_auth_obj)   { described_class.call(email: user.email, password: 'abc') }
+  subject(:valid_auth_obj)   { described_class.call(email: user.email, password: user.password) }
   subject(:invalid_auth_obj) { described_class.call(email: '', password: '') }
 
   describe '.call' do
