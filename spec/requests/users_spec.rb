@@ -33,5 +33,19 @@ RSpec.describe 'User registration', type: :request do
         expect(json['message']).to match(/Validation failed/)
       end
     end
+
+    context 'user with same the email exists' do
+      before do
+        2.times { post '/auth', params: valid_attributes.to_json, headers: headers }
+      end
+
+      it 'does not create a new user' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns failure message' do
+        expect(json['message']).to match(/Account could not be created/)
+      end
+    end
   end
 end

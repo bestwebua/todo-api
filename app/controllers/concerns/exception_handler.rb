@@ -5,7 +5,6 @@ module ExceptionHandler
   class MissingToken < StandardError; end
   class InvalidToken < StandardError; end
 
-
   included do
     rescue_from ActiveRecord::RecordNotFound, with: :four_zero_four
     rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
@@ -26,6 +25,6 @@ module ExceptionHandler
     end
 
     def four_twenty_two(error)
-      json_response({ message: error.message }, :unprocessable_entity)
+      json_response(Auth::Error422MessageService.call(error), :unprocessable_entity)
     end
 end
