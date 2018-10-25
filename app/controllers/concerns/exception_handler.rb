@@ -5,9 +5,11 @@ module ExceptionHandler
   class MissingToken < StandardError; end
   class InvalidToken < StandardError; end
 
+
   included do
     rescue_from ActiveRecord::RecordNotFound, with: :four_zero_four
     rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
+    rescue_from ActiveRecord::RecordNotUnique, with: :four_twenty_two
     rescue_from ExceptionHandler::AuthenticationError, with: :four_zero_one
     rescue_from ExceptionHandler::MissingToken, with: :four_twenty_two
     rescue_from ExceptionHandler::InvalidToken, with: :four_twenty_two

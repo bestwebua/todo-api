@@ -5,9 +5,9 @@ RSpec.describe 'User registration', type: :request do
   let(:headers) { valid_headers.except('Authorization') }
   let(:valid_attributes) { attributes_for(:user, password_confirmation: user.password) }
 
-  describe 'POST /auth/sign_up' do
+  describe 'POST /auth' do
     context 'valid request' do
-      before { post '/auth/sign_up', params: valid_attributes.to_json, headers: headers }
+      before { post '/auth', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
@@ -23,7 +23,7 @@ RSpec.describe 'User registration', type: :request do
     end
 
     context 'invalid request' do
-      before { post '/auth/sign_up', params: {}, headers: headers }
+      before { post '/auth', params: {}, headers: headers }
 
       it 'does not create a new user' do
         expect(response).to have_http_status(422)
