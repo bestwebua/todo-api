@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Tasks API', type: :request do
-  let!(:project)   { create(:project) }
-  let!(:tasks)     { create_list(:task, 10, project_id: project.id) }
+  let!(:user)      { create(:user) }
+  let!(:project)   { create(:project, user: user) }
+  let!(:tasks)     { create_list(:task, 10, project: project) }
   let(:project_id) { project.id }
   let(:id)         { tasks.first.id }
+  let(:headers)    { valid_headers }
 
   describe 'GET /projects/:project_id/tasks' do
-    before { get "/projects/#{project_id}/tasks" }
+    before { get "/projects/#{project_id}/tasks", headers: headers }
 
     context 'project exists' do
       it 'returns status code 200' do
@@ -33,7 +35,7 @@ RSpec.describe 'Tasks API', type: :request do
   end
 
   describe 'GET /projects/:project_id/tasks/:id' do
-    before { get "/projects/#{project_id}/tasks/#{id}" }
+    before { get "/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     context 'project task exists' do
       it 'returns status code 200' do
@@ -59,9 +61,9 @@ RSpec.describe 'Tasks API', type: :request do
   end
 
   describe 'PUT /projects/:project_id/tasks/:id' do
-    let(:valid_attributes) { { name: 'Task Name', deadline: Time.now } }
+    let(:valid_attributes) { { name: 'Task Name', deadline: Time.now }.to_json }
 
-    before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes }
+    before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
     context 'task exists' do
       it 'returns status code 204' do
@@ -88,7 +90,7 @@ RSpec.describe 'Tasks API', type: :request do
   end
 
   describe 'DELETE /projects/:id' do
-    before { delete "/projects/#{project_id}/tasks/#{id}" }
+    before { delete "/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

@@ -2,12 +2,12 @@ class ProjectsController < ApplicationController
   before_action :init_project, only: %i[show update destroy]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     json_response(@projects)
   end
 
   def create
-    @project = Project.create!(project_params)
+    @project = current_user.projects.create!(project_params)
     json_response(@project, :created)
   end
 
