@@ -9,7 +9,7 @@ module Auth
       end
 
       def decode(token)
-        body = JWT.decode(token, HMAC_SECRET)[0]
+        body = JWT.decode(token, HMAC_SECRET).first
         HashWithIndifferentAccess.new(body)
         rescue JWT::DecodeError => error
           raise ExceptionHandler::InvalidToken, error.message

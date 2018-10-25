@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
     head :no_content
   end
 
-
   def destroy
     @project.destroy
     head :no_content
