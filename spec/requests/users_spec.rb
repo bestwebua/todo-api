@@ -22,15 +22,33 @@ RSpec.describe 'User registration', type: :request do
       end
     end
 
-    context 'invalid request' do
-      before { post '/auth', params: {}, headers: headers }
+    describe 'invalid request' do
+      context 'invalid auth data' do
+        before { post '/auth', params: {}, headers: headers }
 
-      it 'does not create a new user' do
-        expect(response).to have_http_status(422)
+        it 'does not create a new user' do
+          expect(response).to have_http_status(422)
+        end
+
+        it 'returns failure message' do
+          expect(json['message']).to match(/Validation failed/)
+        end
       end
 
-      it 'returns failure message' do
-        expect(json['message']).to match(/Validation failed/)
+      context 'passwords do not match' do
+        let(:different_passwords) do
+          valid_attributes.merge(password_confirmation: user.password.reverse)
+        end
+
+        before { post '/auth', params: different_passwords.to_json, headers: headers }
+
+        it 'does not create a new user' do
+          expect(response).to have_http_status(422)
+        end
+
+        it 'returns failure message' do
+          expect(json['message']).to match(/Passwords don't match/)
+        end
       end
     end
 

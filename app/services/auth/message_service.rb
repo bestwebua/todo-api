@@ -32,6 +32,10 @@ module Auth
       def expired_token
         'Your token has expired. Please login to continue.'
       end
+
+      def password_error
+        "Passwords don't match"
+      end
     end
   end
 end
