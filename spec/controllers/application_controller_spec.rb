@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationController, type: :controller do
-  let!(:user)           { create(:user) }
+  let!(:user) { create(:user) }
 
   describe '#authorize_request' do
     context 'auth token is passed' do
