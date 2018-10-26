@@ -36,6 +36,10 @@ module Auth
       def password_error
         "Passwords don't match"
       end
+
+      def update_task_error
+        "Can't update record. Task is already done."
+      end
     end
   end
 end

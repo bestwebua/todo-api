@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :init_project
-  before_action :init_project_task, only: %i[show update destroy]
+  before_action :init_project_task, only: %i[show update complete destroy]
 
   def index
     json_response(@project.tasks)
@@ -19,6 +19,11 @@ class TasksController < ApplicationController
     json_response(@task)
   end
 
+  def complete
+    @task.toggle!(:done)
+    json_response(@task)
+  end
+
   def destroy
     @task.destroy
     head :no_content
@@ -27,7 +32,7 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.permit(:name, :done, :deadline)
+      params.permit(:name, :deadline)
     end
 
     def init_project
