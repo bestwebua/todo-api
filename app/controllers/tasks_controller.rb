@@ -11,13 +11,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @project.tasks.create!(task_params)
-    json_response(@project, :created)
+    json_response(@project.tasks.create!(task_params), :created)
   end
 
   def update
     @task.update(task_params)
-    head :no_content
+    json_response(@task)
   end
 
   def destroy

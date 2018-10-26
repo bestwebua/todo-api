@@ -66,8 +66,8 @@ RSpec.describe 'Tasks API', type: :request do
     before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
     context 'task exists' do
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
 
       it 'updates the task' do

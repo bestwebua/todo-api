@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project.update(project_params)
-    head :no_content
+    json_response(@project)
   end
 
   def destroy
