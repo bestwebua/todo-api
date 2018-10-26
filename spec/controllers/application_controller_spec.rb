@@ -2,12 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ApplicationController, type: :controller do
   let!(:user)           { create(:user) }
-  let(:headers)         { valid_headers }
-  let(:invalid_headers) { invalid_headers }
 
   describe '#authorize_request' do
     context 'auth token is passed' do
-      before { allow(request).to receive(:headers).and_return(headers) }
+      before { allow(request).to receive(:headers).and_return(valid_headers) }
 
       it 'sets the current user' do
         expect(subject.send(:authorize_request)).to eq(user)
