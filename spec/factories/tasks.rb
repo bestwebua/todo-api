@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :task do
-    name { Faker::Lorem.unique.word }
+    name { Faker::Lorem.word }
     done { false }
     deadline { nil }
     project

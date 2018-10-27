@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'Tasks API', type: :request do
-  let!(:user)      { create(:user) }
-  let!(:project)   { create(:project, user: user) }
-  let!(:tasks)     { create_list(:task, 10, project: project) }
-  let(:project_id) { project.id }
-  let(:id)         { tasks.first.id }
-  let(:headers)    { valid_headers }
+  let!(:user)            { create(:user) }
+  let!(:project)         { create(:project, user: user) }
+  let!(:tasks)           { create_list(:task, 10, project: project) }
+  let(:project_id)       { project.id }
+  let(:id)               { tasks.first.id }
+  let(:headers)          { valid_headers }
+  let(:updated_task)     { Task.find(id) }
+  let(:valid_attributes) { { name: 'Task Name', deadline: Time.now }.to_json }
 
   describe 'GET /projects/:project_id/tasks' do
     before { get "/projects/#{project_id}/tasks", headers: headers }
@@ -61,23 +63,38 @@ RSpec.describe 'Tasks API', type: :request do
   end
 
   describe 'PUT /projects/:project_id/tasks/:id' do
-    let(:valid_attributes) { { name: 'Task Name', deadline: Time.now }.to_json }
-
-    before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
-
     context 'task exists' do
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
+
+      context 'task incomplete' do
+        it 'returns status code 200' do
+          expect(response).to have_http_status(200)
+        end
+
+        it 'updates the task' do
+          expect(updated_task.name).to eq('Task Name')
+        end
       end
 
-      it 'updates the task' do
-        updated_task = Task.find(id)
-        expect(updated_task.name).to eq('Task Name')
+      context 'task complete' do
+        before do
+          patch "/projects/#{project_id}/tasks/#{id}/complete", headers: headers
+          put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers
+        end
+
+        it 'returns status code 422' do
+          expect(response).to have_http_status(422)
+        end
+
+        it 'returns error message' do
+          expect(response.body).to match(/Can't update record. Task is already done/)
+        end
       end
     end
 
     context 'task does not exist' do
       let(:id) { 0 }
+      before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -85,6 +102,32 @@ RSpec.describe 'Tasks API', type: :request do
 
       it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find Task/)
+      end
+    end
+  end
+
+  describe 'PATH /projects/:project_id/tasks/:id/complete' do
+    before { patch "/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
+
+    context 'mark as complete' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'updates the task' do
+        expect(updated_task.done).to be(true)
+      end
+    end
+
+    context 'mark as incomplete' do
+      before { patch "/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'updates the task' do
+        expect(updated_task.done).to be(false)
       end
     end
   end
