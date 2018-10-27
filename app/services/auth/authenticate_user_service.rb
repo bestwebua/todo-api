@@ -5,7 +5,7 @@ module Auth
     end
 
     def call
-      Auth::JsonWebTokenService.encode(user_id: user.id) if user
+      persist if user
     end
 
     def self.call(**user_credentials)
@@ -20,6 +20,11 @@ module Auth
         user = User.find_by(email: email)
         return user if user && user.authenticate(password)
         raise(ExceptionHandler::AuthenticationError, Auth::MessageService.invalid_credentials)
+      end
+
+      def persist
+        user.toggle!(:sign_out) if user.sign_out?
+        Auth::JsonWebTokenService.encode(user_id: user.id)
       end
   end
 end

@@ -7,6 +7,11 @@ class AuthenticationController < ApplicationController
     json_response(auth_token: auth_token)
   end
 
+  def sign_out
+    current_user.toggle!(:sign_out)
+    head :no_content
+  end
+
   private
 
     def auth_params
