@@ -38,7 +38,7 @@ module Auth
       end
 
       def update_task_error
-        "Can't update record. Task is already done."
+        "Can't update record. Task is already done"
       end
     end
   end
