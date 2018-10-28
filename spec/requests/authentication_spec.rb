@@ -21,8 +21,20 @@ RSpec.describe 'Authentication', type: :request do
   describe 'GET /auth/sign_out' do
     before { get '/auth/sign_out', headers: valid_headers }
 
-    it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+    context 'status code 204' do
+      specify { expect(response).to have_http_status(204) }
+    end
+
+    context 'current token should be expired' do
+      before { get '/projects', headers: valid_headers }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns auth-token failure message' do
+        expect(response.body).to match(/Invalid token/)
+      end
     end
   end
 end
