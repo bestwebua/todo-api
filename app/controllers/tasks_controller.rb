@@ -29,6 +29,11 @@ class TasksController < ApplicationController
     json_response(@task)
   end
 
+  def position
+    # Tasks::UpPositionCommand.call(@task)
+    json_response(@task)
+  end
+
   private
 
     def task_params

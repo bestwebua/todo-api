@@ -132,6 +132,20 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
+  describe 'PATH /projects/:project_id/tasks/:id/position' do
+    before { patch "/projects/#{project_id}/tasks/#{id}/position", headers: headers }
+
+    context 'move up current task position' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      # it 'changes task position' do
+      #   expect { updated_task }.to change { updated_task.position }.from(1).to(0)
+      # end
+    end
+  end
+
   describe 'DELETE /projects/:id' do
     before { delete "/projects/#{project_id}/tasks/#{id}", headers: headers }
 
