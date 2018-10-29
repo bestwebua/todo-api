@@ -6,8 +6,10 @@ RSpec.describe 'Tasks API', type: :request do
   let!(:tasks)           { create_list(:task, 10, project: project) }
   let(:project_id)       { project.id }
   let(:id)               { tasks.first.id }
+  let(:next_id)          { tasks[1].id }
   let(:headers)          { valid_headers }
   let(:updated_task)     { Task.find(id) }
+  let(:next_task)        { Task.find(next_id) }
   let(:valid_attributes) { { name: 'Task Name', deadline: Time.now }.to_json }
 
   describe 'GET /projects/:project_id/tasks' do
@@ -133,16 +135,30 @@ RSpec.describe 'Tasks API', type: :request do
   end
 
   describe 'PATH /projects/:project_id/tasks/:id/position' do
-    before { patch "/projects/#{project_id}/tasks/#{id}/position", headers: headers }
+    let(:move_up_position) { patch "/projects/#{project_id}/tasks/#{next_id}/position", headers: headers }
 
-    context 'move up current task position' do
+    context 'shift all tasks positions' do
+      let(:move_up_position_with_reload) do
+        move_up_position
+        updated_task.reload
+        next_task.reload
+      end
+
+      it 'move up current task position' do
+        expect { move_up_position_with_reload }.to change { next_task.position }.from(2).to(1)
+      end
+
+      it 'shift other task position' do
+        expect { move_up_position_with_reload }.to change(updated_task, :position)
+      end
+    end
+
+    context 'current task position changed' do
+      before { move_up_position }
+
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
-
-      # it 'changes task position' do
-      #   expect { updated_task }.to change { updated_task.position }.from(1).to(0)
-      # end
     end
   end
 

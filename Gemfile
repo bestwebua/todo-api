@@ -9,6 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
 gem 'bcrypt'
 gem 'jwt'
+gem 'acts_as_list'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

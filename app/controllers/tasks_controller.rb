@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :init_project
-  before_action :init_project_task, only: %i[show update complete destroy]
+  before_action :init_project_task, only: %i[show update destroy complete position]
 
   def index
     json_response(@project.tasks)
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   end
 
   def position
-    # Tasks::UpPositionCommand.call(@task)
+    Tasks::UpPositionCommand.call(@task)
     json_response(@task)
   end
 
