@@ -1,4 +1,4 @@
-module ActiveModelError
+module TaskModelCollbacks
   include ActiveSupport::Concern
 
   private

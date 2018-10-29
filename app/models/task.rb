@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  include ActiveModelError
+  include TaskModelCollbacks
 
   belongs_to :project
   validates_presence_of :name
