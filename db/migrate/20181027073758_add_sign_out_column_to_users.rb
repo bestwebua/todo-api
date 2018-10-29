@@ -4,6 +4,6 @@ class AddSignOutColumnToUsers < ActiveRecord::Migration[5.2]
   end
 
   def down
-    remove_column(:users, :sign_out)
+    remove_column :users, :sign_out
   end
 end
