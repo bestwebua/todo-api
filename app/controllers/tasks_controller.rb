@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :init_project
-  before_action :init_project_task, only: %i[show update destroy complete position]
+  before_action :init_project_task, except: %i[index create]
 
   def index
     json_response(@project.tasks)
