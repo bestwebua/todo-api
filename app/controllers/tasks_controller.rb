@@ -19,14 +19,14 @@ class TasksController < ApplicationController
     json_response(@task)
   end
 
-  def complete
-    @task.toggle!(:done)
-    json_response(@task)
-  end
-
   def destroy
     @task.destroy
     head :no_content
+  end
+
+  def complete
+    Tasks::DoneTriggerCommand.call(@task)
+    json_response(@task)
   end
 
   private
