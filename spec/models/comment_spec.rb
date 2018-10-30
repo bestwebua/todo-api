@@ -20,7 +20,7 @@ RSpec.describe Comment, type: :model do
       expect(build :comment, image: image_file).to be_valid
     end
 
-    it 'valid depending on file presence' do
+    it 'invalid depending on file presence' do
       expect(build :comment, image: not_image_file).to be_invalid
     end
   end
