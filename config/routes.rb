@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         patch :complete
         patch :position
       end
+      resources :comments, only: %i[index create destroy]
     end
   end
 end
