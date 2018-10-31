@@ -11,6 +11,7 @@ gem 'bcrypt'
 gem 'jwt'
 gem 'acts_as_list'
 gem 'activestorage-validator'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

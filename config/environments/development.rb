@@ -1,4 +1,4 @@
-Rails.application.routes.default_url_options[:host] = "localhost:#{Rails::Server::Options.new.parse!(ARGV)[:Port]}"
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
 Rails.application.configure do
   config.cache_classes = false
