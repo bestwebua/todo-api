@@ -64,6 +64,19 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
+  describe 'POST /projects/:project_id/tasks' do
+    before { post "/projects/#{project_id}/tasks", params: valid_attributes, headers: headers }
+
+    it 'returns status code 201' do
+      expect(response).to have_http_status(201)
+    end
+
+    it 'creates the task' do
+      expect(json['name']).to eq('Task Name')
+      expect(json['position']).not_to be_nil
+    end
+  end
+
   describe 'PUT /projects/:project_id/tasks/:id' do
     context 'task exists' do
       before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }

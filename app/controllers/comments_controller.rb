@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    json_response(@task.comments.create!(comment_params), :created)
+    json_response(Comments::CreateCommand.call(@task, comment_params), :created)
   end
 
   def destroy
