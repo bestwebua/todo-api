@@ -52,6 +52,10 @@ RSpec.describe 'Comments API', type: :request do
           expect(json['body']).to eq('Comment')
         end
 
+        it 'creates an img-src link' do
+          expect(json['img_src']).not_to be_nil
+        end
+
         it 'returns status code 201' do
           expect(response).to have_http_status(201)
         end
