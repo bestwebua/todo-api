@@ -1,4 +1,4 @@
-module V1  
+module V1
   class ProjectsController < ApplicationController
     before_action :init_project, only: %i[show update destroy]
 
