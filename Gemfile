@@ -24,6 +24,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'simplecov', '~> 0.13.0'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do
