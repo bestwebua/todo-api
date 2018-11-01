@@ -10,9 +10,11 @@ module Api
       check_headers(request.headers) || default
     end
 
-    def check_headers(headers)
-      accept = headers[:accept]
-      accept && accept.include?("application/#{version}")
-    end
+    private
+
+      def check_headers(headers)
+        accept = headers[:accept]
+        accept && accept.include?("application/#{version}")
+      end
   end
 end
