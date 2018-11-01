@@ -5,9 +5,9 @@ RSpec.describe 'User registration', type: :request do
   let(:headers) { valid_headers.except('Authorization') }
   let(:valid_attributes) { attributes_for(:user, password_confirmation: user.password) }
 
-  describe 'POST /auth' do
+  describe 'POST /api/auth' do
     context 'valid request' do
-      before { post '/auth', params: valid_attributes.to_json, headers: headers }
+      before { post '/api/auth', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
@@ -24,7 +24,7 @@ RSpec.describe 'User registration', type: :request do
 
     describe 'invalid request' do
       context 'invalid auth data' do
-        before { post '/auth', params: {}, headers: headers }
+        before { post '/api/auth', params: {}, headers: headers }
 
         it 'does not create a new user' do
           expect(response).to have_http_status(422)
@@ -40,7 +40,7 @@ RSpec.describe 'User registration', type: :request do
           valid_attributes.merge(password_confirmation: user.password.reverse)
         end
 
-        before { post '/auth', params: different_passwords.to_json, headers: headers }
+        before { post '/api/auth', params: different_passwords.to_json, headers: headers }
 
         it 'does not create a new user' do
           expect(response).to have_http_status(422)
@@ -54,7 +54,7 @@ RSpec.describe 'User registration', type: :request do
 
     context 'user with same the email exists' do
       before do
-        2.times { post '/auth', params: valid_attributes.to_json, headers: headers }
+        2.times { post '/api/auth', params: valid_attributes.to_json, headers: headers }
       end
 
       it 'does not create a new user' do

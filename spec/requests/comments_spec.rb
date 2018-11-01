@@ -14,8 +14,8 @@ RSpec.describe 'Comments API', type: :request do
   let(:comment_id)  { comments.first.id }
   let(:comment)     { Comment.find(comment_id) }
 
-  describe 'GET /projects/:project_id/tasks/:id/comments' do
-    before { get "/projects/#{project_id}/tasks/#{task_id}/comments", headers: headers }
+  describe 'GET /api/projects/:project_id/tasks/:id/comments' do
+    before { get "/api/projects/#{project_id}/tasks/#{task_id}/comments", headers: headers }
 
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
@@ -26,8 +26,8 @@ RSpec.describe 'Comments API', type: :request do
     end
   end
 
-  describe 'POST /projects/:project_id/tasks/:id/comments' do
-    let(:post_path) { "/projects/#{project_id}/tasks/#{task_id}/comments" }
+  describe 'POST /api/projects/:project_id/tasks/:id/comments' do
+    let(:post_path) { "/api/projects/#{project_id}/tasks/#{task_id}/comments" }
 
     context 'valid attributes' do
       describe 'without image' do
@@ -92,8 +92,8 @@ RSpec.describe 'Comments API', type: :request do
     end
   end
 
-  describe 'DELETE /projects/:project_id/tasks/:id/comments/:id' do
-    before { delete "/projects/#{project_id}/tasks/#{task_id}/comments/#{comment_id}", headers: headers }
+  describe 'DELETE /api/projects/:project_id/tasks/:id/comments/:id' do
+    before { delete "/api/projects/#{project_id}/tasks/#{task_id}/comments/#{comment_id}", headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

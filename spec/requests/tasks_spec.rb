@@ -12,8 +12,8 @@ RSpec.describe 'Tasks API', type: :request do
   let(:next_task)        { Task.find(next_id) }
   let(:valid_attributes) { { name: 'Task Name', deadline: Time.now }.to_json }
 
-  describe 'GET /projects/:project_id/tasks' do
-    before { get "/projects/#{project_id}/tasks", headers: headers }
+  describe 'GET /api/projects/:project_id/tasks' do
+    before { get "/api/projects/#{project_id}/tasks", headers: headers }
 
     context 'project exists' do
       it 'returns status code 200' do
@@ -38,8 +38,8 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'GET /projects/:project_id/tasks/:id' do
-    before { get "/projects/#{project_id}/tasks/#{id}", headers: headers }
+  describe 'GET /api/projects/:project_id/tasks/:id' do
+    before { get "/api/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     context 'project task exists' do
       it 'returns status code 200' do
@@ -64,8 +64,8 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'POST /projects/:project_id/tasks' do
-    before { post "/projects/#{project_id}/tasks", params: valid_attributes, headers: headers }
+  describe 'POST /api/projects/:project_id/tasks' do
+    before { post "/api/projects/#{project_id}/tasks", params: valid_attributes, headers: headers }
 
     it 'returns status code 201' do
       expect(response).to have_http_status(201)
@@ -77,9 +77,9 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'PUT /projects/:project_id/tasks/:id' do
+  describe 'PUT /api/projects/:project_id/tasks/:id' do
     context 'task exists' do
-      before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
+      before { put "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       context 'task incomplete' do
         it 'returns status code 200' do
@@ -93,8 +93,8 @@ RSpec.describe 'Tasks API', type: :request do
 
       context 'task complete' do
         before do
-          patch "/projects/#{project_id}/tasks/#{id}/complete", headers: headers
-          put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers
+          patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers
+          put "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers
         end
 
         it 'returns status code 422' do
@@ -109,7 +109,7 @@ RSpec.describe 'Tasks API', type: :request do
 
     context 'task does not exist' do
       let(:id) { 0 }
-      before { put "/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
+      before { put "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
@@ -121,8 +121,8 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'PATH /projects/:project_id/tasks/:id/complete' do
-    before { patch "/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
+  describe 'PATH /api/projects/:project_id/tasks/:id/complete' do
+    before { patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
 
     context 'mark as complete' do
       it 'returns status code 200' do
@@ -135,7 +135,7 @@ RSpec.describe 'Tasks API', type: :request do
     end
 
     context 'mark as incomplete' do
-      before { patch "/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
+      before { patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
 
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
@@ -147,8 +147,8 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'PATH /projects/:project_id/tasks/:id/position' do
-    let(:move_up_position) { patch "/projects/#{project_id}/tasks/#{next_id}/position", headers: headers }
+  describe 'PATH /api/projects/:project_id/tasks/:id/position' do
+    let(:move_up_position) { patch "/api/projects/#{project_id}/tasks/#{next_id}/position", headers: headers }
 
     context 'shift all tasks positions' do
       let(:move_up_position_with_reload) do
@@ -175,8 +175,8 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'DELETE /projects/:id' do
-    before { delete "/projects/#{project_id}/tasks/#{id}", headers: headers }
+  describe 'DELETE /api/projects/:id' do
+    before { delete "/api/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

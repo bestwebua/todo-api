@@ -6,8 +6,8 @@ RSpec.describe 'Projects API', type: :request do
   let(:project_id) { projects.first.id }
   let(:headers)    { valid_headers }
 
-  describe 'GET /projects' do
-    before { get '/projects', headers: headers }
+  describe 'GET /api/projects' do
+    before { get '/api/projects', headers: headers }
 
     it 'returns projects' do
       expect(json).not_to be_empty
@@ -19,8 +19,8 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
-  describe 'GET /projects/:id' do
-    before { get "/projects/#{project_id}", headers: headers }
+  describe 'GET /api/projects/:id' do
+    before { get "/api/projects/#{project_id}", headers: headers }
 
     context 'record exists' do
       it 'returns the project' do
@@ -46,11 +46,11 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
-  describe 'POST /projects' do
+  describe 'POST /api/projects' do
     let(:valid_attributes) { { title: 'Project Title', user_id: user.id }.to_json }
 
     context 'request is valid' do
-      before { post '/projects', params: valid_attributes, headers: headers }
+      before { post '/api/projects', params: valid_attributes, headers: headers }
 
       it 'creates a project' do
         expect(json['title']).to eq('Project Title')
@@ -63,7 +63,7 @@ RSpec.describe 'Projects API', type: :request do
 
     context 'request is invalid' do
       let(:invalid_attributes) { { title: nil }.to_json }
-      before { post '/projects', params: invalid_attributes, headers: headers }
+      before { post '/api/projects', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -75,12 +75,12 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
-  describe 'PUT /projects/:id' do
+  describe 'PUT /api/projects/:id' do
 
     let(:valid_attributes) { { title: 'New Title' }.to_json }
 
     context 'record exists' do
-      before { put "/projects/#{project_id}", params: valid_attributes, headers: headers }
+      before { put "/api/projects/#{project_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).not_to be_empty
@@ -92,8 +92,8 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
-  describe 'DELETE /projects/:id' do
-    before { delete "/projects/#{project_id}", headers: headers }
+  describe 'DELETE /api/projects/:id' do
+    before { delete "/api/projects/#{project_id}", headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
