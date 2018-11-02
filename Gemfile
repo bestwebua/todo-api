@@ -7,6 +7,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
+gem 'loofah', '~> 2.2', '>= 2.2.3'
 gem 'bcrypt'
 gem 'jwt'
 gem 'acts_as_list'
