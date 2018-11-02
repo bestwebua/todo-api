@@ -75,12 +75,12 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
-  describe 'PUT /api/projects/:id' do
+  describe 'PATCH /api/projects/:id' do
 
     let(:valid_attributes) { { title: 'New Title' }.to_json }
 
     context 'record exists' do
-      before { put "/api/projects/#{project_id}", params: valid_attributes, headers: headers }
+      before { patch "/api/projects/#{project_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
         expect(response.body).not_to be_empty

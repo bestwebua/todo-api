@@ -77,9 +77,9 @@ RSpec.describe 'Tasks API', type: :request do
     end
   end
 
-  describe 'PUT /api/projects/:project_id/tasks/:id' do
+  describe 'PATCH /api/projects/:project_id/tasks/:id' do
     context 'task exists' do
-      before { put "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
+      before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       context 'task incomplete' do
         it 'returns status code 200' do
@@ -94,7 +94,7 @@ RSpec.describe 'Tasks API', type: :request do
       context 'task complete' do
         before do
           patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers
-          put "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers
+          patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers
         end
 
         it 'returns status code 422' do
@@ -109,7 +109,7 @@ RSpec.describe 'Tasks API', type: :request do
 
     context 'task does not exist' do
       let(:id) { 0 }
-      before { put "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
+      before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       it 'returns status code 404' do
         expect(response).to have_http_status(404)
