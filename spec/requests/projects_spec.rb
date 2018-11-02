@@ -1,12 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Projects API', type: :request do
+  include Docs::V1::Projects::Api
+
   let!(:user)      { create :user }
   let!(:projects)  { create_list(:project, 10, user: user) }
   let(:project_id) { projects.first.id }
   let(:headers)    { valid_headers }
 
   describe 'GET /api/projects' do
+    include Docs::V1::Projects::Index
+
     before { get '/api/projects', headers: headers }
 
     it 'returns projects' do
@@ -15,6 +19,10 @@ RSpec.describe 'Projects API', type: :request do
     end
 
     it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'gets a projects', :dox do
       expect(response).to have_http_status(200)
     end
   end
