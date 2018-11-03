@@ -2,6 +2,8 @@ require 'rails_helper'
 include ActionDispatch::TestProcess
 
 RSpec.describe 'V1::Comments API', type: :request do
+  include Docs::V1::Comments::Api
+
   let(:headers)     { valid_headers }
   let(:user)        { create(:user) }
   let(:project)     { create(:project, user: user) }
@@ -15,6 +17,8 @@ RSpec.describe 'V1::Comments API', type: :request do
   let(:comment)     { Comment.find(comment_id) }
 
   describe 'GET /api/projects/:project_id/tasks/:id/comments' do
+    include Docs::V1::Comments::Index
+
     before { get "/api/projects/#{project_id}/tasks/#{task_id}/comments", headers: headers }
 
     it 'returns status code 200' do
@@ -24,9 +28,15 @@ RSpec.describe 'V1::Comments API', type: :request do
     it 'returns all task comments' do
       expect(json.size).to eq(10)
     end
+
+    it 'gets comments', :dox do
+      expect(response).to have_http_status(200)
+    end
   end
 
   describe 'POST /api/projects/:project_id/tasks/:id/comments' do
+    include Docs::V1::Comments::Create
+
     let(:post_path) { "/api/projects/#{project_id}/tasks/#{task_id}/comments" }
 
     context 'valid attributes' do
@@ -39,6 +49,10 @@ RSpec.describe 'V1::Comments API', type: :request do
         end
 
         it 'returns status code 201' do
+          expect(response).to have_http_status(201)
+        end
+
+        it 'create a comment', :dox do
           expect(response).to have_http_status(201)
         end
       end
@@ -63,6 +77,8 @@ RSpec.describe 'V1::Comments API', type: :request do
     end
 
     context 'invalid attributes' do
+      let(:not_image_file) { fixture_file_upload(Rails.root.join('spec/fixtures/files', 'ror.txt')) }
+
       context 'wrong comment attribute' do
         let(:invalid_attributes) { { body: '' }.to_json }
         before { post(post_path, params: invalid_attributes, headers: headers) }
@@ -71,13 +87,12 @@ RSpec.describe 'V1::Comments API', type: :request do
           expect(task.comments.count).to eq(10)
         end
 
-        it 'returns status code 201' do
+        it 'returns status code 422' do
           expect(response).to have_http_status(422)
         end
       end
 
       context 'wrong MIME type' do
-        let(:not_image_file) { fixture_file_upload(Rails.root.join('spec/fixtures/files', 'ror.txt')) }
         let(:invalid_attributes) { { body: 'Comment', image: not_image_file } }
         before { post(post_path, params: invalid_attributes, headers: headers) }
 
@@ -85,7 +100,16 @@ RSpec.describe 'V1::Comments API', type: :request do
           expect(task.comments.count).to eq(10)
         end
 
-        it 'returns status code 201' do
+        it 'returns status code 422' do
+          expect(response).to have_http_status(422)
+        end
+      end
+
+      context 'wrong attributes and MIME type' do
+        let(:invalid_attributes) { { body: nil, image: not_image_file } }
+        before { post(post_path, params: invalid_attributes, headers: headers) }
+
+        it 'create a comment fails', :dox do
           expect(response).to have_http_status(422)
         end
       end
@@ -93,9 +117,15 @@ RSpec.describe 'V1::Comments API', type: :request do
   end
 
   describe 'DELETE /api/projects/:project_id/tasks/:id/comments/:id' do
+    include Docs::V1::Comments::Delete
+
     before { delete "/api/projects/#{project_id}/tasks/#{task_id}/comments/#{comment_id}", headers: headers }
 
     it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+
+    it 'delete a comment', :dox do
       expect(response).to have_http_status(204)
     end
   end

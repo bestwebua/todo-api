@@ -22,7 +22,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'gets a projects', :dox do
+    it 'gets projects', :dox do
       expect(response).to have_http_status(200)
     end
   end

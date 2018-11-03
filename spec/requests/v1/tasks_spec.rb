@@ -28,7 +28,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
         expect(json.size).to eq(10)
       end
 
-      it 'gets a tasks', :dox do
+      it 'gets tasks', :dox do
         expect(response).to have_http_status(200)
       end
     end
