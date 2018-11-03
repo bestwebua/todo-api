@@ -28,6 +28,8 @@ RSpec.describe 'Projects API', type: :request do
   end
 
   describe 'GET /api/projects/:id' do
+    include Docs::V1::Projects::Show
+
     before { get "/api/projects/#{project_id}", headers: headers }
 
     context 'record exists' do
@@ -37,6 +39,10 @@ RSpec.describe 'Projects API', type: :request do
       end
 
       it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'show the project', :dox do
         expect(response).to have_http_status(200)
       end
     end
@@ -51,10 +57,16 @@ RSpec.describe 'Projects API', type: :request do
       it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find Project/)
       end
+
+      it 'project not found', :dox do
+        expect(response).to have_http_status(404)
+      end
     end
   end
 
   describe 'POST /api/projects' do
+    include Docs::V1::Projects::Create
+
     let(:valid_attributes) { { title: 'Project Title', user_id: user.id }.to_json }
 
     context 'request is valid' do
@@ -65,6 +77,10 @@ RSpec.describe 'Projects API', type: :request do
       end
 
       it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+
+      it 'create a project', :dox do
         expect(response).to have_http_status(201)
       end
     end
@@ -80,10 +96,15 @@ RSpec.describe 'Projects API', type: :request do
       it 'returns a validation failure message' do
         expect(response.body).to match(/Validation failed: Title can't be blank/)
       end
+
+      it 'does not create a project', :dox do
+        expect(response).to have_http_status(422)
+      end
     end
   end
 
   describe 'PATCH /api/projects/:id' do
+    include Docs::V1::Projects::Update
 
     let(:valid_attributes) { { title: 'New Title' }.to_json }
 
@@ -97,13 +118,23 @@ RSpec.describe 'Projects API', type: :request do
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
+
+      it 'update a project', :dox do
+        expect(response).to have_http_status(200)
+      end
     end
   end
 
   describe 'DELETE /api/projects/:id' do
+    include Docs::V1::Projects::Delete
+
     before { delete "/api/projects/#{project_id}", headers: headers }
 
     it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+
+    it 'delete a project', :dox do
       expect(response).to have_http_status(204)
     end
   end

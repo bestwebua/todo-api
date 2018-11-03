@@ -11,7 +11,23 @@ module Docs
       end
 
       document :index do
-        action 'Get a list of projects'
+        action 'Get projects'
+      end
+
+      document :show do
+        action 'Get a project'
+      end
+
+      document :create do
+        action 'Create project'
+      end
+
+      document :update do
+        action 'Update project'
+      end
+
+      document :delete do
+        action 'Delete project'
       end
     end
   end
