@@ -59,14 +59,14 @@ GEM
     byebug (10.0.2)
     case_transform (0.2)
       activesupport
-    codeclimate-test-reporter (1.0.9)
-      simplecov (<= 0.13)
+    codeclimate-test-reporter (1.0.7)
+      simplecov
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     database_cleaner (1.7.0)
     diff-lcs (1.3)
-    docile (1.1.5)
+    docile (1.3.1)
     dox (1.1.0)
       rails (>= 4.0)
       rspec-core
@@ -99,7 +99,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    method_source (0.9.0)
+    method_source (0.9.1)
     mimemagic (0.3.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
@@ -166,8 +166,8 @@ GEM
     ruby_dep (1.5.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
-    simplecov (0.13.0)
-      docile (~> 1.1.0)
+    simplecov (0.16.1)
+      docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
@@ -216,7 +216,7 @@ DEPENDENCIES
   rspec-rails
   rspec_file_chef
   shoulda-matchers
-  simplecov (~> 0.13.0)
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
