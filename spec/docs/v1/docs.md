@@ -1,5 +1,134 @@
 
 
+# Group Authentication
+
+
+## Authentication [/auth]
+
+
+### Sign In [POST /api/auth/sign_in]
+
+
++ Request sign in
+**POST**&nbsp;&nbsp;`/api/auth/sign_in`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "email": "venice@daugherty.com",
+              "password": "abc"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDEzNTEyOTZ9.NoWCfIFXnX8wJMFuQAh0mzJGlRTGwIAZngfPTicbdg4"
+            }
+
++ Request sign in
+**POST**&nbsp;&nbsp;`/api/auth/sign_in`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "email": "laurettaondricka@price.com",
+              "password": "L9V9CuM4D43aDaZk"
+            }
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Invalid credentials"
+            }
+
+### Sign Out [GET /api/auth/sign_out]
+
+
++ Request sign out
+**GET**&nbsp;&nbsp;`/api/auth/sign_out`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1NDEzNTEyOTZ9.IXLSHEjNVlJw-TccLIov0alWE8A11IYjAYZQ-1zIMtA
+            Content-Type: application/json
+
++ Response 204
+
+### Sign Up [POST /api/auth]
+
+
++ Request sign up
+**POST**&nbsp;&nbsp;`/api/auth`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "email": "kieshaemard@skiles.name",
+              "password": "abc",
+              "password_confirmation": "abc"
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Account created successfully",
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMSwiZXhwIjoxNTQxMzUxMjk2fQ.avEI-tdlGFlKhML8nVGEh6I1MJodG8Xt4JJM1vPFfP4"
+            }
+
++ Request sign up
+**POST**&nbsp;&nbsp;`/api/auth`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Validation failed: Password can't be blank, Email can't be blank, Password digest can't be blank"
+            }
+
 # Group Projects
 
 
@@ -14,8 +143,8 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDEzNDY4MDR9.fC39g000THIBoEUnEsjkSiHp04NkTd9RMMSW0h_-wAc
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1NDEzNTEyOTZ9.05g-t0NVTbtTyy9mRHM-b9SsjFNWVV2cYD3BBr9OvjU
             Content-Type: application/json
 
 + Response 200
@@ -29,90 +158,90 @@
             [
               {
                 "id": 1,
-                "title": "sit",
-                "created_at": "2018-11-03T15:53:24.865Z",
-                "updated_at": "2018-11-03T15:53:24.865Z",
+                "title": "doloremque",
+                "created_at": "2018-11-03T17:08:16.070Z",
+                "updated_at": "2018-11-03T17:08:16.070Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 2,
-                "title": "exercitationem",
-                "created_at": "2018-11-03T15:53:24.870Z",
-                "updated_at": "2018-11-03T15:53:24.870Z",
+                "title": "occaecati",
+                "created_at": "2018-11-03T17:08:16.074Z",
+                "updated_at": "2018-11-03T17:08:16.074Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 3,
-                "title": "magni",
-                "created_at": "2018-11-03T15:53:24.873Z",
-                "updated_at": "2018-11-03T15:53:24.873Z",
+                "title": "ipsum",
+                "created_at": "2018-11-03T17:08:16.076Z",
+                "updated_at": "2018-11-03T17:08:16.076Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 4,
-                "title": "vero",
-                "created_at": "2018-11-03T15:53:24.876Z",
-                "updated_at": "2018-11-03T15:53:24.876Z",
+                "title": "alias",
+                "created_at": "2018-11-03T17:08:16.079Z",
+                "updated_at": "2018-11-03T17:08:16.079Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 5,
-                "title": "aperiam",
-                "created_at": "2018-11-03T15:53:24.879Z",
-                "updated_at": "2018-11-03T15:53:24.879Z",
+                "title": "perspiciatis",
+                "created_at": "2018-11-03T17:08:16.081Z",
+                "updated_at": "2018-11-03T17:08:16.081Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 6,
-                "title": "minus",
-                "created_at": "2018-11-03T15:53:24.881Z",
-                "updated_at": "2018-11-03T15:53:24.881Z",
+                "title": "voluptatem",
+                "created_at": "2018-11-03T17:08:16.083Z",
+                "updated_at": "2018-11-03T17:08:16.083Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 7,
-                "title": "deleniti",
-                "created_at": "2018-11-03T15:53:24.884Z",
-                "updated_at": "2018-11-03T15:53:24.884Z",
+                "title": "perferendis",
+                "created_at": "2018-11-03T17:08:16.085Z",
+                "updated_at": "2018-11-03T17:08:16.085Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 8,
-                "title": "itaque",
-                "created_at": "2018-11-03T15:53:24.886Z",
-                "updated_at": "2018-11-03T15:53:24.886Z",
+                "title": "quia",
+                "created_at": "2018-11-03T17:08:16.088Z",
+                "updated_at": "2018-11-03T17:08:16.088Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 9,
-                "title": "dolore",
-                "created_at": "2018-11-03T15:53:24.889Z",
-                "updated_at": "2018-11-03T15:53:24.889Z",
+                "title": "accusantium",
+                "created_at": "2018-11-03T17:08:16.090Z",
+                "updated_at": "2018-11-03T17:08:16.090Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 10,
-                "title": "ut",
-                "created_at": "2018-11-03T15:53:24.892Z",
-                "updated_at": "2018-11-03T15:53:24.892Z",
+                "title": "libero",
+                "created_at": "2018-11-03T17:08:16.092Z",
+                "updated_at": "2018-11-03T17:08:16.092Z",
                 "tasks": [
             
                 ]
@@ -127,15 +256,15 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1NDEzNDY4MDV9.z_To-KpbCADIVS_LdCkIGvEd4O-fo7n3PeP2VscR1Jc
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1NDEzNTEyOTZ9.NerZqJ2bst5VJBE1OB6NeH3a_aHiFEaThQwUmelTB3s
             Content-Type: application/json
 
     + Body
 
             {
               "title": "Project Title",
-              "user_id": 2
+              "user_id": 5
             }
 
 + Response 201
@@ -149,8 +278,8 @@
             {
               "id": 21,
               "title": "Project Title",
-              "created_at": "2018-11-03T15:53:25.008Z",
-              "updated_at": "2018-11-03T15:53:25.008Z",
+              "created_at": "2018-11-03T17:08:16.184Z",
+              "updated_at": "2018-11-03T17:08:16.184Z",
               "tasks": [
             
               ]
@@ -161,8 +290,8 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1NDEzNDY4MDV9.pGp0_IysjtPD9rljmesVdR_mqVG-7pEMtTZ4wSmJ4YY
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1NDEzNTEyOTZ9.j-m74aAYJEf7IuvjapyyHPt1lboEgg6t78-AYOLJWc4
             Content-Type: application/json
 
     + Body
@@ -193,8 +322,8 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1NDEzNDY4MDV9.7_sCfiU4HTbRXt6Azd-6EVV2qHhB1u6D0QOwwrTcsCs
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE1NDEzNTEyOTZ9.jOB1hyzPUflIcscq5VKybS4mhnDiy9LCTpMEChnwDRw
             Content-Type: application/json
 
 + Response 200
@@ -207,9 +336,9 @@
 
             {
               "id": 32,
-              "title": "non",
-              "created_at": "2018-11-03T15:53:25.072Z",
-              "updated_at": "2018-11-03T15:53:25.072Z",
+              "title": "quia",
+              "created_at": "2018-11-03T17:08:16.232Z",
+              "updated_at": "2018-11-03T17:08:16.232Z",
               "tasks": [
             
               ]
@@ -220,8 +349,8 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1NDEzNDY4MDV9.Pbpq6JKpY2uaUHyzrFJ7kfvw2U7BdY7owuezA6I91Eo
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE1NDEzNTEyOTZ9.gxQ_cooWXwnidNrx5jE99doS9P1YBMHlgiz4Lq80QUA
             Content-Type: application/json
 
 + Response 404
@@ -246,8 +375,8 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1NDEzNDY4MDV9.pW2R90Qzz__tKl06IU_JTSB_lYrKb4jjb91NgQmjgAY
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE1NDEzNTEyOTZ9.KqveIZCUtOZasY7o3VDb77HLkf1Pm5Ji2t9jpKJvaxg
             Content-Type: application/json
 
     + Body
@@ -267,8 +396,8 @@
             {
               "id": 52,
               "title": "New Title",
-              "created_at": "2018-11-03T15:53:25.144Z",
-              "updated_at": "2018-11-03T15:53:25.173Z",
+              "created_at": "2018-11-03T17:08:16.317Z",
+              "updated_at": "2018-11-03T17:08:16.349Z",
               "tasks": [
             
               ]
@@ -284,8 +413,8 @@
 
     + Headers
 
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE1NDEzNDY4MDV9.XCzacV1mhu5lNAxoTm-rsrZBt7CIktYOlndgbd_9DDs
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMCwiZXhwIjoxNTQxMzUxMjk2fQ.X56B6Fy-7oPGyBqcO0dtAOqo_jLGURamKxMzYo-i2Nw
             Content-Type: application/json
 
 + Response 204

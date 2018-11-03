@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'V1::User API', type: :request do
+  include Docs::V1::Authentication::Api
+
   let(:user) { build(:user) }
   let(:headers) { valid_headers.except('Authorization') }
   let(:valid_attributes) { attributes_for(:user, password_confirmation: user.password) }
 
   describe 'POST /api/auth' do
+    include Docs::V1::Authentication::SignUp
+
     context 'valid request' do
       before { post '/api/auth', params: valid_attributes.to_json, headers: headers }
 
@@ -20,6 +24,10 @@ RSpec.describe 'V1::User API', type: :request do
       it 'returns an authentication token' do
         expect(json['auth_token']).not_to be_nil
       end
+
+      it 'sign up', :dox do
+        expect(response).to have_http_status(201)
+      end
     end
 
     describe 'invalid request' do
@@ -32,6 +40,10 @@ RSpec.describe 'V1::User API', type: :request do
 
         it 'returns failure message' do
           expect(json['message']).to match(/Validation failed/)
+        end
+
+        it 'sign up', :dox do
+          expect(response).to have_http_status(422)
         end
       end
 

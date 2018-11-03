@@ -10,8 +10,16 @@ module Docs
         end
       end
 
-      document :authenticate do
-        action 'Sign in'
+      document :sign_in do
+        action 'Sign In'
+      end
+
+      document :sign_out do
+        action 'Sign Out'
+      end
+
+      document :sign_up do
+        action 'Sign Up'
       end
     end
   end
