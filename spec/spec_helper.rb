@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'rspec_file_chef'
 
 SimpleCov.start do
   add_filter 'spec/'
@@ -6,6 +7,10 @@ end
 
 
 RSpec.configure do |config|
+  RspecFileChef::FileChef.configure do |config|
+    config.rspec_path = File.expand_path(__dir__)
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
