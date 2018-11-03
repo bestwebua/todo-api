@@ -26,7 +26,7 @@ RSpec.describe 'V1::Authentication API', type: :request do
       specify { expect(json['message']).to match(/Invalid credentials/) }
       specify { expect(response).to have_http_status(401) }
 
-      it 'sign in', :dox do
+      it 'sign in fails', :dox do
         expect(response).to have_http_status(401)
       end
     end

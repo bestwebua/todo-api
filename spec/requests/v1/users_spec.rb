@@ -42,7 +42,7 @@ RSpec.describe 'V1::User API', type: :request do
           expect(json['message']).to match(/Validation failed/)
         end
 
-        it 'sign up', :dox do
+        it 'sign up fails', :dox do
           expect(response).to have_http_status(422)
         end
       end
