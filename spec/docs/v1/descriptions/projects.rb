@@ -14,12 +14,12 @@ module Docs
         action 'Get projects'
       end
 
-      document :show do
-        action 'Get a project'
-      end
-
       document :create do
         action 'Create project'
+      end
+
+      document :show do
+        action 'Read project'
       end
 
       document :update do
