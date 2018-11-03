@@ -1,7 +1,7 @@
 require 'rails_helper'
 include ActionDispatch::TestProcess
 
-RSpec.describe 'Comments API', type: :request do
+RSpec.describe 'V1::Comments API', type: :request do
   let(:headers)     { valid_headers }
   let(:user)        { create(:user) }
   let(:project)     { create(:project, user: user) }

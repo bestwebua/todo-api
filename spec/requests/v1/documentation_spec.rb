@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Documentation', type: :request do
+RSpec.describe 'V1::Documentation', type: :request do
   before(:context) do
     current_doc = Rails.public_path.join('docs', 'v1.html').to_s
     @env = RspecFileChef::FileChef.new(current_doc)

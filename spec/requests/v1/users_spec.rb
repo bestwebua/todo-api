@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User registration', type: :request do
+RSpec.describe 'V1::User API', type: :request do
   let(:user) { build(:user) }
   let(:headers) { valid_headers.except('Authorization') }
   let(:valid_attributes) { attributes_for(:user, password_confirmation: user.password) }

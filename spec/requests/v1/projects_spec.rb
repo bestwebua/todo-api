@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Projects API', type: :request do
+RSpec.describe 'V1::Projects API', type: :request do
   include Docs::V1::Projects::Api
 
   let!(:user)      { create :user }

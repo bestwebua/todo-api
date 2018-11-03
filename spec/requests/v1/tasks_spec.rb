@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Tasks API', type: :request do
+RSpec.describe 'V1::Tasks API', type: :request do
   let!(:user)            { create(:user) }
   let!(:project)         { create(:project, user: user) }
   let!(:tasks)           { create_list(:task, 10, project: project) }

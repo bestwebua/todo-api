@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'Authentication', type: :request do
+RSpec.describe 'V1::Authentication API', type: :request do
+  include Docs::V1::Authentication::Api
+
   let!(:user) { create(:user) }
   let(:headers) { valid_headers.except('Authorization') }
   let(:valid_credentials) { { email: user.email, password: user.password }.to_json  }
