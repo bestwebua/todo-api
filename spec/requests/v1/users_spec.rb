@@ -4,8 +4,8 @@ RSpec.describe 'V1::User API', type: :request do
   include Docs::V1::Authentication::Api
 
   let(:user) { build(:user) }
-  let(:headers) { valid_headers.except('Authorization') }
-  let(:valid_attributes) { attributes_for(:user, password_confirmation: user.password) }
+  let!(:headers) { valid_headers.except('Authorization') }
+  let!(:valid_attributes) { attributes_for(:user, password_confirmation: user.password) }
 
   describe 'POST /api/auth' do
     include Docs::V1::Authentication::SignUp
@@ -75,6 +75,16 @@ RSpec.describe 'V1::User API', type: :request do
         it 'returns failure message' do
           expect(json['message']).to match(/Account could not be created/)
         end
+      end
+
+      context 'secret key not assigned' do
+        before do
+          stub_const('Auth::JsonWebTokenService::HMAC_SECRET', nil)
+          post '/api/auth', params: valid_attributes.to_json, headers: headers
+        end
+
+        specify { expect(response).to have_http_status(500) }
+        specify { expect(json['message']).to match(/secret_key_base not assigned/) }
       end
     end
   end
