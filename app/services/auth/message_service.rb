@@ -1,6 +1,10 @@
 module Auth
   class MessageService
     class << self
+      def secret_key_not_assigned
+        'secret_key_base not assigned'
+      end
+
       def invalid_credentials
         'Invalid credentials'
       end

@@ -62,19 +62,19 @@ RSpec.describe 'V1::User API', type: :request do
           expect(json['message']).to match(/Passwords don't match/)
         end
       end
-    end
 
-    context 'user with same the email exists' do
-      before do
-        2.times { post '/api/auth', params: valid_attributes.to_json, headers: headers }
-      end
+      context 'user with same the email exists' do
+        before do
+          2.times { post '/api/auth', params: valid_attributes.to_json, headers: headers }
+        end
 
-      it 'does not create a new user' do
-        expect(response).to have_http_status(422)
-      end
+        it 'does not create a new user' do
+          expect(response).to have_http_status(422)
+        end
 
-      it 'returns failure message' do
-        expect(json['message']).to match(/Account could not be created/)
+        it 'returns failure message' do
+          expect(json['message']).to match(/Account could not be created/)
+        end
       end
     end
   end

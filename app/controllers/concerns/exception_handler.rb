@@ -1,6 +1,7 @@
 module ExceptionHandler
   extend ActiveSupport::Concern
 
+  class InvalidSecretKey < StandardError; end
   class RegistrationError < StandardError; end
   class AuthenticationError < StandardError; end
   class MissingToken < StandardError; end
@@ -11,6 +12,7 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordNotFound, with: :error_404
     rescue_from ActiveRecord::RecordInvalid, with: :error_422
     rescue_from ActiveRecord::RecordNotUnique, with: :error_422
+    rescue_from ExceptionHandler::InvalidSecretKey, with: :error_500
     rescue_from ExceptionHandler::RegistrationError, with: :error_422
     rescue_from ExceptionHandler::UpdateRecordError, with: :error_422
     rescue_from ExceptionHandler::AuthenticationError, with: :error_401
@@ -30,5 +32,9 @@ module ExceptionHandler
 
     def error_422(error)
       json_response(Auth::Error422MessageService.call(error), :unprocessable_entity)
+    end
+
+    def error_500(error)
+      json_response({ message: error.message }, :internal_server_error)
     end
 end

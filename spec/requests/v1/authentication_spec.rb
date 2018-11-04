@@ -13,8 +13,8 @@ RSpec.describe 'V1::Authentication API', type: :request do
 
     context 'request is valid' do
       before { post '/api/auth/sign_in', params: valid_credentials, headers: headers }
-      specify { expect(json['auth_token']).not_to be_nil }
       specify { expect(response).to have_http_status(200) }
+      specify { expect(json['auth_token']).not_to be_nil }
 
       it 'sign in', :dox do
         expect(response).to have_http_status(200)
@@ -23,8 +23,8 @@ RSpec.describe 'V1::Authentication API', type: :request do
 
     context 'request is invalid' do
       before { post '/api/auth/sign_in', params: invalid_credentials, headers: headers }
-      specify { expect(json['message']).to match(/Invalid credentials/) }
       specify { expect(response).to have_http_status(401) }
+      specify { expect(json['message']).to match(/Invalid credentials/) }
 
       it 'sign in fails', :dox do
         expect(response).to have_http_status(401)
