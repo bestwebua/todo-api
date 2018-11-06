@@ -5,7 +5,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
   let!(:user)            { create(:user) }
   let!(:project)         { create(:project, user: user) }
-  let!(:tasks)           { create_list(:task, 10, project: project) }
+  let!(:tasks)           { create_list(:task, 2, project: project) }
   let(:project_id)       { project.id }
   let(:id)               { tasks.first.id }
   let(:next_id)          { tasks[1].id }
@@ -25,7 +25,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
 
       it 'returns all project tasks' do
-        expect(json.size).to eq(10)
+        expect(json.size).to eq(2)
       end
 
       it 'gets tasks', :dox do

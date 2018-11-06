@@ -27,7 +27,7 @@ module V1
       end
 
       def init_task_comment
-        @comment = @task.comments.find_by!(id: params[:id]) if @task
+        @comment = @task.comments.find_by!(id: params[:id])
       end
   end
 end

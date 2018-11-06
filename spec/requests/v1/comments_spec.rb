@@ -8,11 +8,11 @@ RSpec.describe 'V1::Comments API', type: :request do
   let(:user)        { create(:user) }
   let(:project)     { create(:project, user: user) }
   let(:project_id)  { project.id }
-  let(:tasks)       { create_list(:task, 10, project: project) }
+  let(:tasks)       { create_list(:task, 2, project: project) }
   let(:id)          { tasks.first.id }
   let(:task)        { Task.find(id) }
   let(:task_id)     { task.id }
-  let!(:comments)   { create_list(:comment, 10, task: task) }
+  let!(:comments)   { create_list(:comment, 2, task: task) }
   let(:comment_id)  { comments.first.id }
   let(:comment)     { Comment.find(comment_id) }
 
@@ -26,7 +26,7 @@ RSpec.describe 'V1::Comments API', type: :request do
     end
 
     it 'returns all task comments' do
-      expect(json.size).to eq(10)
+      expect(json.size).to eq(2)
     end
 
     it 'gets comments', :dox do
@@ -84,7 +84,7 @@ RSpec.describe 'V1::Comments API', type: :request do
         before { post(post_path, params: invalid_attributes, headers: headers) }
 
         it 'doesnt create a comment' do
-          expect(task.comments.count).to eq(10)
+          expect(task.comments.count).to eq(2)
         end
 
         it 'returns status code 422' do
@@ -97,7 +97,7 @@ RSpec.describe 'V1::Comments API', type: :request do
         before { post(post_path, params: invalid_attributes, headers: headers) }
 
         it 'doesnt create a comment' do
-          expect(task.comments.count).to eq(10)
+          expect(task.comments.count).to eq(2)
         end
 
         it 'returns status code 422' do

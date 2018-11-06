@@ -46,7 +46,7 @@ module V1
       end
 
       def init_project_task
-        @task = @project.tasks.find_by!(id: params[:id]) if @project
+        @task = @project.tasks.find_by!(id: params[:id])
       end
   end
 end

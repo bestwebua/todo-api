@@ -3,10 +3,7 @@ module V1
     skip_before_action :authorize_request, only: :create
 
     def create
-      user = User.create!(user_params)
-      auth_token = Auth::AuthenticateUserService.call(email: user.email, password: user.password)
-      response = { message: Auth::MessageService.account_created, auth_token: auth_token }
-      json_response(response, :created)
+      json_response(Users::CreateCommand.call(user_params), :created)
     end
 
     private

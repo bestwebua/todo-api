@@ -4,7 +4,7 @@ RSpec.describe 'V1::Projects API', type: :request do
   include Docs::V1::Projects::Api
 
   let!(:user)      { create :user }
-  let!(:projects)  { create_list(:project, 10, user: user) }
+  let!(:projects)  { create_list(:project, 2, user: user) }
   let(:project_id) { projects.first.id }
   let(:headers)    { valid_headers }
 
@@ -15,7 +15,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     it 'returns projects' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      expect(json.size).to eq(2)
     end
 
     it 'returns status code 200' do
