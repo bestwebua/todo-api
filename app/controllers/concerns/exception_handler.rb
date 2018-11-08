@@ -9,15 +9,15 @@ module ExceptionHandler
   class UpdateRecordError < StandardError; end
 
   included do
-    rescue_from ActiveRecord::RecordNotFound, with: :error_404
-    rescue_from ActiveRecord::RecordInvalid, with: :error_422
-    rescue_from ActiveRecord::RecordNotUnique, with: :error_422
-    rescue_from ExceptionHandler::InvalidSecretKey, with: :error_500
-    rescue_from ExceptionHandler::RegistrationError, with: :error_422
-    rescue_from ExceptionHandler::UpdateRecordError, with: :error_422
     rescue_from ExceptionHandler::AuthenticationError, with: :error_401
-    rescue_from ExceptionHandler::MissingToken, with: :error_422
-    rescue_from ExceptionHandler::InvalidToken, with: :error_422
+    rescue_from ActiveRecord::RecordNotFound, with: :error_404
+    rescue_from ActiveRecord::RecordInvalid,
+      ActiveRecord::RecordNotUnique,
+      ExceptionHandler::RegistrationError,
+      ExceptionHandler::UpdateRecordError,
+      ExceptionHandler::MissingToken,
+      ExceptionHandler::InvalidToken, with: :error_422
+    rescue_from ExceptionHandler::InvalidSecretKey, with: :error_500
   end
 
   private
