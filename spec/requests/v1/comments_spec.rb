@@ -60,7 +60,7 @@ RSpec.describe 'V1::Comments API', type: :request do
       describe 'with image' do
         let(:image_file) { fixture_file_upload(Rails.root.join('spec/fixtures/files', 'ror.png')) }
         let(:valid_attributes) { { body: 'Comment', image: image_file } }
-        before { post(post_path, params: valid_attributes, headers: headers) }
+        before { post(post_path, params: valid_attributes, headers: headers, as: :json) }
 
         it 'creates a comment' do
           expect(json['body']).to eq('Comment')
@@ -71,6 +71,10 @@ RSpec.describe 'V1::Comments API', type: :request do
         end
 
         it 'returns status code 201' do
+          expect(response).to have_http_status(201)
+        end
+
+        it 'create a comment with image', :dox do
           expect(response).to have_http_status(201)
         end
       end
@@ -107,7 +111,7 @@ RSpec.describe 'V1::Comments API', type: :request do
 
       context 'wrong attributes and MIME type' do
         let(:invalid_attributes) { { body: nil, image: not_image_file } }
-        before { post(post_path, params: invalid_attributes, headers: headers) }
+        before { post(post_path, params: invalid_attributes, headers: headers, as: :json) }
 
         it 'create a comment fails', :dox do
           expect(response).to have_http_status(422)

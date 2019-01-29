@@ -20,7 +20,7 @@
     + Body
 
             {
-              "email": "barney@zemlak.info",
+              "email": "beverly@skiles.net",
               "password": "abc"
             }
 
@@ -33,7 +33,7 @@
     + Body
 
             {
-              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDEzNTY1MTB9.8g1p8y6Pg2yw6NWwLhoJYf9xyqqgyUpK7TGDY0vwUmc"
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDg4MzgwMTV9.IUCUgc6fNI5vhtPAsO8zYzeZ3za99Cm3Cm_C6gzyI3E"
             }
 
 + Request sign in fails
@@ -47,8 +47,8 @@
     + Body
 
             {
-              "email": "ameegerlach@swift.name",
-              "password": "4kXu535cHgK5"
+              "email": "jenniffer@borer.net",
+              "password": "G8DjJiI8Q3NeE"
             }
 
 + Response 401
@@ -72,7 +72,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1NDEzNTY1MTB9.yr3EjTRms0zumnOrLwmYT4VsPBhl1at_aTETXjWa5i8
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1NDg4MzgwMTZ9.oxWEp-o309uG9My782cJBOoLAVHm0Qv-26xkWLneBOs
             Content-Type: application/json
 
 + Response 204
@@ -91,7 +91,7 @@
     + Body
 
             {
-              "email": "ardell@kling.net",
+              "email": "tedgulgowski@ruel.biz",
               "password": "abc",
               "password_confirmation": "abc"
             }
@@ -106,7 +106,7 @@
 
             {
               "message": "Account created successfully",
-              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNSwiZXhwIjoxNTQxMzU2NTEyfQ.iSoYjjKoQ-x7C7Rlx_1hMHUwuBuYLX9H-BGy8UdU45Q"
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNiwiZXhwIjoxNTQ4ODM4MDE2fQ.bjNa5Rq4VFAcqOAQdM7a4IHrgXXso0y40-wA8aBmEys"
             }
 
 + Request sign up fails
@@ -147,7 +147,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1NDEzNTY1MTF9.UU5LV7YtiWJu664SFzOCmMkiIf-MEN8APNeB_exAPn0
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1NDg4MzgwMTZ9.rcGSknDcy9ZAENYEZzPMNhskW4Ait-LV-3J_CSuuwpQ
             Content-Type: application/json
 
 + Response 200
@@ -161,63 +161,15 @@
             [
               {
                 "id": 1,
-                "body": "tempora",
+                "body": "iusto",
                 "img_src": null,
-                "created_at": "2018-11-03T18:35:11.069Z"
+                "created_at": "2019-01-29T08:46:56.061Z"
               },
               {
                 "id": 2,
-                "body": "a",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.072Z"
-              },
-              {
-                "id": 3,
-                "body": "neque",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.075Z"
-              },
-              {
-                "id": 4,
-                "body": "quis",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.077Z"
-              },
-              {
-                "id": 5,
-                "body": "sunt",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.080Z"
-              },
-              {
-                "id": 6,
-                "body": "debitis",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.082Z"
-              },
-              {
-                "id": 7,
-                "body": "fugit",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.085Z"
-              },
-              {
-                "id": 8,
                 "body": "et",
                 "img_src": null,
-                "created_at": "2018-11-03T18:35:11.087Z"
-              },
-              {
-                "id": 9,
-                "body": "aut",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.090Z"
-              },
-              {
-                "id": 10,
-                "body": "sequi",
-                "img_src": null,
-                "created_at": "2018-11-03T18:35:11.093Z"
+                "created_at": "2019-01-29T08:46:56.063Z"
               }
             ]
 
@@ -225,15 +177,15 @@
 
 + Parameters
     + project_id: `2` (number, required)
-    + task_id: `11` (number, required)
+    + task_id: `3` (number, required)
 
 + Request create a comment
-**POST**&nbsp;&nbsp;`/api/projects/2/tasks/11/comments`
+**POST**&nbsp;&nbsp;`/api/projects/2/tasks/3/comments`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1NDEzNTY1MTF9.tO4wKlK3jJ0TW-7hg77QJVmtz7r_lOuyFk-7HCLgvEk
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1NDg4MzgwMTZ9.yiyc2pSEkuu8_hg_KUTjiweMsZPYtF8QwIe7S1jcSeU
             Content-Type: application/json
 
     + Body
@@ -251,34 +203,66 @@
     + Body
 
             {
-              "id": 21,
+              "id": 5,
               "body": "Comment",
               "img_src": null,
-              "created_at": "2018-11-03T18:35:11.220Z"
+              "created_at": "2019-01-29T08:46:56.100Z"
             }
 
-+ Request create a comment fails
-**POST**&nbsp;&nbsp;`/api/projects/3/tasks/21/comments`
++ Request create a comment with image
+**POST**&nbsp;&nbsp;`/api/projects/3/tasks/5/comments`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1NDEzNTY1MTF9.8YsBYNyGWmn1PGELrgaiw7cHLcZrntPqcGrDPxI0CaY
-            Content-Type: multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1NDg4MzgwMTZ9.7UtsMhk_m9FQoCYug56gsk6klTejiAywxEbV6zqBN7A
+            Content-Type: application/json
 
     + Body
 
-            ------------XnJLe9ZIbbGUYtzPQJ16u1
-            Content-Disposition: form-data; name="body"
-            
-            
-            ------------XnJLe9ZIbbGUYtzPQJ16u1
-            Content-Disposition: form-data; name="image"; filename="ror.txt"
-            Content-Type: 
-            Content-Length: 0
-            
-            
-            ------------XnJLe9ZIbbGUYtzPQJ16u1--
+            {
+              "body": "Comment",
+              "image": {
+                "original_filename": "ror.png",
+                "tempfile": "#<File:0x0000559e49c4eb08>",
+                "content_type": null
+              }
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "id": 8,
+              "body": "Comment",
+              "img_src": null,
+              "created_at": "2019-01-29T08:46:56.122Z"
+            }
+
++ Request create a comment fails
+**POST**&nbsp;&nbsp;`/api/projects/4/tasks/7/comments`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE1NDg4MzgwMTZ9.dacxnhG-jKnC5QYswRlBhkSrO3A15wQj1WiGOtuY4wA
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "body": null,
+              "image": {
+                "original_filename": "ror.txt",
+                "tempfile": "#<File:0x0000559e49a0bad0>",
+                "content_type": null
+              }
+            }
 
 + Response 422
 
@@ -289,23 +273,23 @@
     + Body
 
             {
-              "message": "Validation failed: Body can't be blank, Image File is not an image"
+              "message": "Validation failed: Body can't be blank"
             }
 
 ### Delete comment [DELETE /api/projects/{project_id}/tasks/{task_id}/comments/{id}]
 
 + Parameters
-    + project_id: `4` (number, required)
-    + task_id: `31` (number, required)
-    + id: `32` (number, required)
+    + project_id: `5` (number, required)
+    + task_id: `9` (number, required)
+    + id: `11` (number, required)
 
 + Request delete a comment
-**DELETE**&nbsp;&nbsp;`/api/projects/4/tasks/31/comments/32`
+**DELETE**&nbsp;&nbsp;`/api/projects/5/tasks/9/comments/11`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE1NDEzNTY1MTF9.JBkLHmdhf_DKbhleFhEaYHdS76wKsAuwx_p8dDUhsPA
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE1NDg4MzgwMTZ9.IGU1r_w_UhlwU8yedhqZ7SlIZPtsnIwKbS93FowWV8w
             Content-Type: application/json
 
 + Response 204
@@ -325,7 +309,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE1NDEzNTY1MTF9.y-Ra1-Y1-zOVqXju_e3VSIoRkG7COgZhCG6Gu-yTSiU
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE1NDg4MzgwMTZ9.DaLk69NkyxXwn3qNTBLRuQ-BKS9amPCwS_at3VUsr_U
             Content-Type: application/json
 
 + Response 200
@@ -338,91 +322,19 @@
 
             [
               {
-                "id": 5,
-                "title": "ut",
-                "created_at": "2018-11-03T18:35:11.489Z",
-                "updated_at": "2018-11-03T18:35:11.489Z",
-                "tasks": [
-            
-                ]
-              },
-              {
                 "id": 6,
-                "title": "nesciunt",
-                "created_at": "2018-11-03T18:35:11.492Z",
-                "updated_at": "2018-11-03T18:35:11.492Z",
+                "title": "consequuntur",
+                "created_at": "2019-01-29T08:46:56.175Z",
+                "updated_at": "2019-01-29T08:46:56.175Z",
                 "tasks": [
             
                 ]
               },
               {
                 "id": 7,
-                "title": "dignissimos",
-                "created_at": "2018-11-03T18:35:11.495Z",
-                "updated_at": "2018-11-03T18:35:11.495Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 8,
-                "title": "et",
-                "created_at": "2018-11-03T18:35:11.497Z",
-                "updated_at": "2018-11-03T18:35:11.497Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 9,
-                "title": "sunt",
-                "created_at": "2018-11-03T18:35:11.500Z",
-                "updated_at": "2018-11-03T18:35:11.500Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 10,
-                "title": "totam",
-                "created_at": "2018-11-03T18:35:11.503Z",
-                "updated_at": "2018-11-03T18:35:11.503Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 11,
-                "title": "ducimus",
-                "created_at": "2018-11-03T18:35:11.506Z",
-                "updated_at": "2018-11-03T18:35:11.506Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 12,
-                "title": "sapiente",
-                "created_at": "2018-11-03T18:35:11.509Z",
-                "updated_at": "2018-11-03T18:35:11.509Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 13,
-                "title": "veniam",
-                "created_at": "2018-11-03T18:35:11.511Z",
-                "updated_at": "2018-11-03T18:35:11.511Z",
-                "tasks": [
-            
-                ]
-              },
-              {
-                "id": 14,
-                "title": "voluptatibus",
-                "created_at": "2018-11-03T18:35:11.515Z",
-                "updated_at": "2018-11-03T18:35:11.515Z",
+                "title": "voluptatem",
+                "created_at": "2019-01-29T08:46:56.177Z",
+                "updated_at": "2019-01-29T08:46:56.177Z",
                 "tasks": [
             
                 ]
@@ -438,14 +350,14 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE1NDEzNTY1MTF9.4plC1KoLrxmlwoEqm_RZBAdhqfMsMkzQjBpJDJ0CxcI
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMCwiZXhwIjoxNTQ4ODM4MDE2fQ.ZY2o7v7AJkTd8oW9xzsrcuaCVkWO2l8ZnN1pZAHLi7g
             Content-Type: application/json
 
     + Body
 
             {
               "title": "Project Title",
-              "user_id": 9
+              "user_id": 10
             }
 
 + Response 201
@@ -457,10 +369,10 @@
     + Body
 
             {
-              "id": 25,
+              "id": 10,
               "title": "Project Title",
-              "created_at": "2018-11-03T18:35:11.601Z",
-              "updated_at": "2018-11-03T18:35:11.601Z",
+              "created_at": "2019-01-29T08:46:56.211Z",
+              "updated_at": "2019-01-29T08:46:56.211Z",
               "tasks": [
             
               ]
@@ -472,7 +384,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMCwiZXhwIjoxNTQxMzU2NTExfQ._WtbgsIAffFqhFJiHoLxuYnh-W3JOw_SA6tUoJNTyK0
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMSwiZXhwIjoxNTQ4ODM4MDE2fQ.XgCQO3ShegRDahogC2hzb_JhlEcaijL2t7vT9WGPZZo
             Content-Type: application/json
 
     + Body
@@ -496,15 +408,15 @@
 ### Read project [GET /api/projects/{id}]
 
 + Parameters
-    + id: `36` (number, required)
+    + id: `13` (number, required)
 
 + Request show the project
-**GET**&nbsp;&nbsp;`/api/projects/36`
+**GET**&nbsp;&nbsp;`/api/projects/13`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMSwiZXhwIjoxNTQxMzU2NTExfQ.D_10pbDSET_O5ppIQAr_GggjmmPwZ3o4vTG3RtJ7MUk
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNTQ4ODM4MDE2fQ.cYIOCPCuS4Lrv92E3otVT-LkSGbmY20qC8g1-zA9_wE
             Content-Type: application/json
 
 + Response 200
@@ -516,10 +428,10 @@
     + Body
 
             {
-              "id": 36,
-              "title": "dolores",
-              "created_at": "2018-11-03T18:35:11.651Z",
-              "updated_at": "2018-11-03T18:35:11.651Z",
+              "id": 13,
+              "title": "quia",
+              "created_at": "2019-01-29T08:46:56.236Z",
+              "updated_at": "2019-01-29T08:46:56.236Z",
               "tasks": [
             
               ]
@@ -531,7 +443,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNTQxMzU2NTExfQ.J76elRFJIhxE1igAUn_VG61n-EOjGLo2ysyddkQ7NQc
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNTQ4ODM4MDE2fQ.OaISqBcOpx-f3VBzT2_neDxxd86GJi7scipEy5UwcyU
             Content-Type: application/json
 
 + Response 404
@@ -549,15 +461,15 @@
 ### Update project [PATCH /api/projects/{id}]
 
 + Parameters
-    + id: `56` (number, required)
+    + id: `17` (number, required)
 
 + Request update a project
-**PATCH**&nbsp;&nbsp;`/api/projects/56`
+**PATCH**&nbsp;&nbsp;`/api/projects/17`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNTQxMzU2NTExfQ.tStwr81_PQkEjkmGyQ1_nMH7U0-amWd9-dWkkmfbqF8
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNCwiZXhwIjoxNTQ4ODM4MDE2fQ.px-1fyK7EdOHAtHmurLxjRuFvPEOzfyDQ_YOcrcU0S4
             Content-Type: application/json
 
     + Body
@@ -575,10 +487,10 @@
     + Body
 
             {
-              "id": 56,
+              "id": 17,
               "title": "New Title",
-              "created_at": "2018-11-03T18:35:11.731Z",
-              "updated_at": "2018-11-03T18:35:11.759Z",
+              "created_at": "2019-01-29T08:46:56.263Z",
+              "updated_at": "2019-01-29T08:46:56.270Z",
               "tasks": [
             
               ]
@@ -587,15 +499,15 @@
 ### Delete project [DELETE /api/projects/{id}]
 
 + Parameters
-    + id: `66` (number, required)
+    + id: `19` (number, required)
 
 + Request delete a project
-**DELETE**&nbsp;&nbsp;`/api/projects/66`
+**DELETE**&nbsp;&nbsp;`/api/projects/19`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNCwiZXhwIjoxNTQxMzU2NTExfQ.1D_BNfXxhgPnQsnHdENbQHGxwVI8i-P_VoedSESfz-U
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwiZXhwIjoxNTQ4ODM4MDE2fQ.PxSdDw_C9PnT92a8ew_fP6x8aCRVijfNxfzfHeUygag
             Content-Type: application/json
 
 + Response 204
@@ -609,15 +521,15 @@
 ### Get tasks [GET /api/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `76` (number, required)
+    + project_id: `21` (number, required)
 
 + Request gets tasks
-**GET**&nbsp;&nbsp;`/api/projects/76/tasks`
+**GET**&nbsp;&nbsp;`/api/projects/21/tasks`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwiZXhwIjoxNTQxMzU2NTExfQ.Lpp5PtQ-5IjJE_nlbA13ZFjA1GKTkYg1kt2iGx-Ab-U
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNiwiZXhwIjoxNTQ4ODM4MDE2fQ.YYjnd_wWrvRXz8e-Rp0HLTCA07TQXq-lZkQJbYVumWQ
             Content-Type: application/json
 
 + Response 200
@@ -630,121 +542,25 @@
 
             [
               {
-                "id": 41,
-                "name": "repellat",
+                "id": 11,
+                "name": "eum",
                 "done": false,
                 "deadline": null,
                 "position": 1,
-                "created_at": "2018-11-03T18:35:11.812Z",
-                "updated_at": "2018-11-03T18:35:11.812Z",
+                "created_at": "2019-01-29T08:46:56.296Z",
+                "updated_at": "2019-01-29T08:46:56.296Z",
                 "comments": [
             
                 ]
               },
               {
-                "id": 42,
-                "name": "ut",
-                "done": false,
-                "deadline": null,
-                "position": 2,
-                "created_at": "2018-11-03T18:35:11.816Z",
-                "updated_at": "2018-11-03T18:35:11.816Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 43,
-                "name": "et",
-                "done": false,
-                "deadline": null,
-                "position": 3,
-                "created_at": "2018-11-03T18:35:11.821Z",
-                "updated_at": "2018-11-03T18:35:11.821Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 44,
-                "name": "accusamus",
-                "done": false,
-                "deadline": null,
-                "position": 4,
-                "created_at": "2018-11-03T18:35:11.825Z",
-                "updated_at": "2018-11-03T18:35:11.825Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 45,
-                "name": "quia",
-                "done": false,
-                "deadline": null,
-                "position": 5,
-                "created_at": "2018-11-03T18:35:11.829Z",
-                "updated_at": "2018-11-03T18:35:11.829Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 46,
-                "name": "voluptate",
-                "done": false,
-                "deadline": null,
-                "position": 6,
-                "created_at": "2018-11-03T18:35:11.833Z",
-                "updated_at": "2018-11-03T18:35:11.833Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 47,
+                "id": 12,
                 "name": "qui",
                 "done": false,
                 "deadline": null,
-                "position": 7,
-                "created_at": "2018-11-03T18:35:11.837Z",
-                "updated_at": "2018-11-03T18:35:11.837Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 48,
-                "name": "et",
-                "done": false,
-                "deadline": null,
-                "position": 8,
-                "created_at": "2018-11-03T18:35:11.840Z",
-                "updated_at": "2018-11-03T18:35:11.840Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 49,
-                "name": "voluptatibus",
-                "done": false,
-                "deadline": null,
-                "position": 9,
-                "created_at": "2018-11-03T18:35:11.844Z",
-                "updated_at": "2018-11-03T18:35:11.844Z",
-                "comments": [
-            
-                ]
-              },
-              {
-                "id": 50,
-                "name": "aut",
-                "done": false,
-                "deadline": null,
-                "position": 10,
-                "created_at": "2018-11-03T18:35:11.848Z",
-                "updated_at": "2018-11-03T18:35:11.848Z",
+                "position": 2,
+                "created_at": "2019-01-29T08:46:56.298Z",
+                "updated_at": "2019-01-29T08:46:56.298Z",
                 "comments": [
             
                 ]
@@ -754,22 +570,22 @@
 ### Create task [POST /api/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `77` (number, required)
+    + project_id: `22` (number, required)
 
 + Request create a task
-**POST**&nbsp;&nbsp;`/api/projects/77/tasks`
+**POST**&nbsp;&nbsp;`/api/projects/22/tasks`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNiwiZXhwIjoxNTQxMzU2NTExfQ.I72RsrjmNfvfXacT58qLqnDxZy-PGqmOUdEFOSrOaZc
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNTQ4ODM4MDE2fQ.RXaEx7R4q3almWePU8XxmdWjuALcwaGGSGyH4-uSktw
             Content-Type: application/json
 
     + Body
 
             {
               "name": "Task Name",
-              "deadline": "2018-11-03T20:35:11.929+02:00"
+              "deadline": "2019-01-29T10:46:56.327+02:00"
             }
 
 + Response 201
@@ -781,25 +597,25 @@
     + Body
 
             {
-              "id": 61,
+              "id": 15,
               "name": "Task Name",
               "done": false,
-              "deadline": "2018-11-03",
-              "position": 11,
-              "created_at": "2018-11-03T18:35:11.937Z",
-              "updated_at": "2018-11-03T18:35:11.937Z",
+              "deadline": "2019-01-29",
+              "position": 3,
+              "created_at": "2019-01-29T08:46:56.332Z",
+              "updated_at": "2019-01-29T08:46:56.332Z",
               "comments": [
             
               ]
             }
 
 + Request does not create a task
-**POST**&nbsp;&nbsp;`/api/projects/78/tasks`
+**POST**&nbsp;&nbsp;`/api/projects/23/tasks`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNTQxMzU2NTExfQ.zhOmlqb_Agj9yeJIlev7vIQDZ1vqMV5a4CL89lMbczM
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNTQ4ODM4MDE2fQ.Hi3Ypd46GyzUJDTqKo67kdcit-GcbH07nSQp6UJ8Yqs
             Content-Type: application/json
 
     + Body
@@ -823,16 +639,16 @@
 ### Read task [GET /api/projects/{project_id}/tasks/{id}]
 
 + Parameters
-    + project_id: `79` (number, required)
-    + id: `72` (number, required)
+    + project_id: `24` (number, required)
+    + id: `18` (number, required)
 
 + Request show the task
-**GET**&nbsp;&nbsp;`/api/projects/79/tasks/72`
+**GET**&nbsp;&nbsp;`/api/projects/24/tasks/18`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNTQxMzU2NTEyfQ.eCccBLGcVN2jslRwd9vEpefG99pDZDLxJp80CwLpabo
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOSwiZXhwIjoxNTQ4ODM4MDE2fQ.ZQTEWJRtA3ZigHhdso3evxv1gC9_Xkj1Qkq0Dn2ctZc
             Content-Type: application/json
 
 + Response 200
@@ -844,25 +660,25 @@
     + Body
 
             {
-              "id": 72,
-              "name": "quam",
+              "id": 18,
+              "name": "illo",
               "done": false,
               "deadline": null,
               "position": 1,
-              "created_at": "2018-11-03T18:35:12.018Z",
-              "updated_at": "2018-11-03T18:35:12.018Z",
+              "created_at": "2019-01-29T08:46:56.364Z",
+              "updated_at": "2019-01-29T08:46:56.364Z",
               "comments": [
             
               ]
             }
 
 + Request task not found
-**GET**&nbsp;&nbsp;`/api/projects/80/tasks/0`
+**GET**&nbsp;&nbsp;`/api/projects/25/tasks/0`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOSwiZXhwIjoxNTQxMzU2NTEyfQ.OPuSwvcepxPEnv_NuB50VaRdziiXbRJtJIw1LDVwKNg
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMCwiZXhwIjoxNTQ4ODM4MDE2fQ.ASi0jXXF6kyPb1jOGNPDhg2wpknL2Rkj9eW7R9WBJ7o
             Content-Type: application/json
 
 + Response 404
@@ -880,23 +696,23 @@
 ### Update task [PATCH /api/projects/{project_id}/tasks/{id}]
 
 + Parameters
-    + project_id: `81` (number, required)
-    + id: `92` (number, required)
+    + project_id: `26` (number, required)
+    + id: `22` (number, required)
 
 + Request update a task
-**PATCH**&nbsp;&nbsp;`/api/projects/81/tasks/92`
+**PATCH**&nbsp;&nbsp;`/api/projects/26/tasks/22`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMCwiZXhwIjoxNTQxMzU2NTEyfQ.aOH-AgqEVsSEl9nwZtPulWr2XGl3D3lRGXiFrasid-Q
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMSwiZXhwIjoxNTQ4ODM4MDE2fQ.8q9yJee41xvMh_MPGVBD8U8QZjlFJemrcqITXAqWGsE
             Content-Type: application/json
 
     + Body
 
             {
               "name": "Task Name",
-              "deadline": "2018-11-03T20:35:12.195+02:00"
+              "deadline": "2019-01-29T10:46:56.414+02:00"
             }
 
 + Response 200
@@ -908,32 +724,32 @@
     + Body
 
             {
-              "id": 92,
+              "id": 22,
               "name": "Task Name",
               "done": false,
-              "deadline": "2018-11-03",
+              "deadline": "2019-01-29",
               "position": 1,
-              "created_at": "2018-11-03T18:35:12.154Z",
-              "updated_at": "2018-11-03T18:35:12.203Z",
+              "created_at": "2019-01-29T08:46:56.408Z",
+              "updated_at": "2019-01-29T08:46:56.420Z",
               "comments": [
             
               ]
             }
 
 + Request update a task fails
-**PATCH**&nbsp;&nbsp;`/api/projects/82/tasks/102`
+**PATCH**&nbsp;&nbsp;`/api/projects/27/tasks/24`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMSwiZXhwIjoxNTQxMzU2NTEyfQ.eQlztw8RwdmVCNAHgtx_JdFUrTtCe_lXF9MzsHYELjY
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMiwiZXhwIjoxNTQ4ODM4MDE2fQ.QL5wL1SskicMU34DNHX4t7gSxZnLXtvABcQEm4GGfoA
             Content-Type: application/json
 
     + Body
 
             {
               "name": "Task Name",
-              "deadline": "2018-11-03T20:35:12.262+02:00"
+              "deadline": "2019-01-29T10:46:56.438+02:00"
             }
 
 + Response 422
@@ -951,16 +767,16 @@
 ### Delete task [DELETE /api/projects/{project_id}/tasks/{id}]
 
 + Parameters
-    + project_id: `83` (number, required)
-    + id: `112` (number, required)
+    + project_id: `28` (number, required)
+    + id: `26` (number, required)
 
 + Request delete a task
-**DELETE**&nbsp;&nbsp;`/api/projects/83/tasks/112`
+**DELETE**&nbsp;&nbsp;`/api/projects/28/tasks/26`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMiwiZXhwIjoxNTQxMzU2NTEyfQ.pdjc9eqgPSIh5qsbjEAFx1gGa2vR_VR6HiWscnZIb2I
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTQ4ODM4MDE2fQ.N3HxR13zVQ8ng7c04HkGHUfHq_wT4oJgrd8eXtkwrME
             Content-Type: application/json
 
 + Response 204
@@ -968,16 +784,16 @@
 ### Complete task [PATCH /api/projects/{project_id}/tasks/{id}/complete]
 
 + Parameters
-    + project_id: `84` (number, required)
-    + id: `122` (number, required)
+    + project_id: `29` (number, required)
+    + id: `28` (number, required)
 
 + Request trigger task status
-**PATCH**&nbsp;&nbsp;`/api/projects/84/tasks/122/complete`
+**PATCH**&nbsp;&nbsp;`/api/projects/29/tasks/28/complete`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTQxMzU2NTEyfQ.GveUU2-6mO1vwXvhZBiwnn6aufGlcosddtLpFmIPG9w
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNTQ4ODM4MDE2fQ.sv8VnL-wiQyFzp3F8Jlcxhzw06Ola2BK-WsaCGteBEk
             Content-Type: application/json
 
 + Response 200
@@ -989,13 +805,13 @@
     + Body
 
             {
-              "id": 122,
-              "name": "molestias",
+              "id": 28,
+              "name": "quo",
               "done": true,
               "deadline": null,
               "position": 1,
-              "created_at": "2018-11-03T18:35:12.385Z",
-              "updated_at": "2018-11-03T18:35:12.438Z",
+              "created_at": "2019-01-29T08:46:56.491Z",
+              "updated_at": "2019-01-29T08:46:56.500Z",
               "comments": [
             
               ]
@@ -1004,16 +820,16 @@
 ### Up task [PATCH /api/projects/{project_id}/tasks/{id}/position]
 
 + Parameters
-    + project_id: `85` (number, required)
-    + id: `133` (number, required)
+    + project_id: `30` (number, required)
+    + id: `31` (number, required)
 
 + Request change task position
-**PATCH**&nbsp;&nbsp;`/api/projects/85/tasks/133/position`
+**PATCH**&nbsp;&nbsp;`/api/projects/30/tasks/31/position`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNTQxMzU2NTEyfQ.estWX2CJpYH2IXwUmhVgjolw8-aBe94CFPNga02Uyzs
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNSwiZXhwIjoxNTQ4ODM4MDE2fQ.-cZzvdZ9GfLCqZE0TgiLef2Fy8NFBGuzgGSQp1z9GU4
             Content-Type: application/json
 
 + Response 200
@@ -1025,13 +841,13 @@
     + Body
 
             {
-              "id": 133,
-              "name": "libero",
+              "id": 31,
+              "name": "voluptas",
               "done": false,
               "deadline": null,
               "position": 1,
-              "created_at": "2018-11-03T18:35:12.462Z",
-              "updated_at": "2018-11-03T18:35:12.525Z",
+              "created_at": "2019-01-29T08:46:56.514Z",
+              "updated_at": "2019-01-29T08:46:56.528Z",
               "comments": [
             
               ]
