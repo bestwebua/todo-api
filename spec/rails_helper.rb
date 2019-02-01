@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'database_cleaner'
 require 'dox'
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -40,19 +39,17 @@ RSpec.configure do |config|
   config.include RequestSpecHelper
   config.include ControllerSpecHelper
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
-
   config.after(:each, :dox) do |example|
-    example.metadata[:request] = request
-    example.metadata[:response] = response
+    example.metadata[:request] =
+      if request.headers['CONTENT_TYPE']&.include?('multipart/form-data; boundary=')
+        patched_request = request.dup
+        def patched_request.body
+          OpenStruct.new(read: request_parameters.to_json)
+        end
+        patched_request
+      else
+        request
+      end
+      example.metadata[:response] = response
   end
 end

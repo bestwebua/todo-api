@@ -16,5 +16,6 @@ module TodoApi
   class Application < Rails::Application
     config.load_defaults 5.2
     config.api_only = true
+    config.i18n.fallbacks = true
   end
 end

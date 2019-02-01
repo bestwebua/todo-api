@@ -7,8 +7,8 @@ end
 
 
 RSpec.configure do |config|
-  RspecFileChef::FileChef.configure do |config|
-    config.rspec_path = File.expand_path(__dir__)
+  RspecFileChef::FileChef.configure do |configuration|
+    configuration.rspec_path = File.expand_path(__dir__)
   end
 
   config.expect_with :rspec do |expectations|
