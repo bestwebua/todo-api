@@ -60,7 +60,7 @@ RSpec.describe 'V1::Comments API', type: :request do
       describe 'with image' do
         let(:image_file) { fixture_file_upload(Rails.root.join('spec/fixtures/files', 'ror.png')) }
         let(:valid_attributes) { { body: 'Comment', image: image_file } }
-        before { post(post_path, params: valid_attributes, headers: headers, as: :json) }
+        before { post(post_path, params: valid_attributes, headers: headers) }
 
         it 'creates a comment' do
           expect(json['body']).to eq('Comment')
