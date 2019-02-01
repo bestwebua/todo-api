@@ -15,8 +15,8 @@ gem 'activestorage-validator'
 gem 'active_model_serializers'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rspec-rails'
 end
 
@@ -24,7 +24,6 @@ group :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'faker'
-  gem 'database_cleaner'
   gem 'simplecov'
   gem 'codeclimate-test-reporter'
   gem 'dox', require: false
@@ -36,5 +35,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
