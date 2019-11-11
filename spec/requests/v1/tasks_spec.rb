@@ -20,12 +20,12 @@ RSpec.describe 'V1::Tasks API', type: :request do
     before { get "/api/projects/#{project_id}/tasks", headers: headers }
 
     context 'project exists' do
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns all project tasks' do
+        expect(json).to match_json_schema('tasks/index')
       end
 
-      it 'returns all project tasks' do
-        expect(json.size).to eq(2)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
 
       it 'gets tasks', :dox do
@@ -52,13 +52,12 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'request is valid' do
       before { post "/api/projects/#{project_id}/tasks", params: valid_attributes, headers: headers }
 
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+      it 'creates the task' do
+        expect(json).to match_json_schema('tasks/create')
       end
 
-      it 'creates the task' do
-        expect(json['name']).to eq('Task Name')
-        expect(json['position']).not_to be_nil
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
       end
 
       it 'create a task', :dox do
@@ -71,13 +70,12 @@ RSpec.describe 'V1::Tasks API', type: :request do
         post "/api/projects/#{project_id}/tasks", params: { name: nil }.to_json, headers: headers
       end
 
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+      it 'returns error message' do
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
 
-      it 'creates the task' do
-        expect(json['name']).to be_nil
-        expect(json['position']).to be_nil
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
       end
 
       it 'does not create a task', :dox do
@@ -92,12 +90,12 @@ RSpec.describe 'V1::Tasks API', type: :request do
     before { get "/api/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     context 'project task exists' do
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns the task' do
+        expect(json).to match_json_schema('tasks/show')
       end
 
-      it 'returns the task' do
-        expect(json['id']).to eq(id)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
 
       it 'show the task', :dox do
@@ -129,12 +127,12 @@ RSpec.describe 'V1::Tasks API', type: :request do
       before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       context 'task incomplete' do
-        it 'returns status code 200' do
-          expect(response).to have_http_status(200)
+        it 'updates the task' do
+          expect(json).to match_json_schema('tasks/update')
         end
 
-        it 'updates the task' do
-          expect(updated_task.name).to eq('Task Name')
+        it 'returns status code 200' do
+          expect(response).to have_http_status(200)
         end
 
         it 'update a task', :dox do

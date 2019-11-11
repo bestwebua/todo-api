@@ -21,12 +21,12 @@ RSpec.describe 'V1::Comments API', type: :request do
 
     before { get "/api/projects/#{project_id}/tasks/#{task_id}/comments", headers: headers }
 
-    it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+    it 'returns all task comments' do
+      expect(json).to match_json_schema('comments/index')
     end
 
-    it 'returns all task comments' do
-      expect(json.size).to eq(2)
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
     end
 
     it 'gets comments', :dox do
@@ -45,7 +45,7 @@ RSpec.describe 'V1::Comments API', type: :request do
         before { post(post_path, params: valid_attributes, headers: headers) }
 
         it 'creates a comment' do
-          expect(json['body']).to eq('Comment')
+          expect(json).to match_json_schema('comments/create')
         end
 
         it 'returns status code 201' do
@@ -62,12 +62,8 @@ RSpec.describe 'V1::Comments API', type: :request do
         let(:valid_attributes) { { body: 'Comment', image: image_file } }
         before { post(post_path, params: valid_attributes, headers: headers) }
 
-        it 'creates a comment' do
-          expect(json['body']).to eq('Comment')
-        end
-
-        it 'creates an img-src link' do
-          expect(json['img_src']).not_to be_nil
+        it 'creates a comment with img-src link' do
+          expect(json).to match_json_schema('comments/create')
         end
 
         it 'returns status code 201' do
@@ -85,6 +81,7 @@ RSpec.describe 'V1::Comments API', type: :request do
 
       context 'wrong comment attribute' do
         let(:invalid_attributes) { { body: '' }.to_json }
+
         before { post(post_path, params: invalid_attributes, headers: headers) }
 
         it 'doesnt create a comment' do
@@ -111,6 +108,7 @@ RSpec.describe 'V1::Comments API', type: :request do
 
       context 'wrong attributes and MIME type' do
         let(:invalid_attributes) { { body: nil, image: not_image_file } }
+
         before { post(post_path, params: invalid_attributes, headers: headers, as: :json) }
 
         it 'create a comment fails', :dox do

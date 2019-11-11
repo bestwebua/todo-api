@@ -18,6 +18,10 @@ module V1
 
     private
 
+      def serializer
+        CommentSerializer
+      end
+
       def comment_params
         params.permit(:body, :image)
       end

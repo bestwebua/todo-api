@@ -14,8 +14,7 @@ RSpec.describe 'V1::Projects API', type: :request do
     before { get '/api/projects', headers: headers }
 
     it 'returns projects' do
-      expect(json).not_to be_empty
-      expect(json.size).to eq(2)
+      expect(json).to match_json_schema('projects/index')
     end
 
     it 'returns status code 200' do
@@ -36,7 +35,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       before { post '/api/projects', params: valid_attributes, headers: headers }
 
       it 'creates a project' do
-        expect(json['title']).to eq('Project Title')
+        expect(json).to match_json_schema('projects/create')
       end
 
       it 'returns status code 201' do
@@ -50,6 +49,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     context 'request is invalid' do
       let(:invalid_attributes) { { title: nil }.to_json }
+
       before { post '/api/projects', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
@@ -73,8 +73,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     context 'record exists' do
       it 'returns the project' do
-        expect(json).not_to be_empty
-        expect(json['id']).to eq(project_id)
+        expect(json).to match_json_schema('projects/show')
       end
 
       it 'returns status code 200' do
@@ -112,7 +111,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       before { patch "/api/projects/#{project_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
-        expect(response.body).not_to be_empty
+        expect(json).to match_json_schema('projects/update')
       end
 
       it 'returns status code 200' do

@@ -37,6 +37,10 @@ module V1
 
     private
 
+      def serializer
+        TaskSerializer
+      end
+
       def task_params
         params.permit(:name, :deadline)
       end

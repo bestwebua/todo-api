@@ -28,6 +28,10 @@ module V1
 
     private
 
+      def serializer
+        ProjectSerializer
+      end
+
       def project_params
         params.permit(:title)
       end
