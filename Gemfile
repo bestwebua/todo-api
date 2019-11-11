@@ -16,6 +16,8 @@ gem 'fast_jsonapi', '~> 1.5'
 group :development, :test do
   gem 'pry-byebug', '~> 3.7'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'json_matchers', '~> 0.11.1', require: 'json_matchers/rspec'
+  gem 'rspec-rails', '~> 3.9'
 end
 
 group :test do
@@ -23,9 +25,7 @@ group :test do
   gem 'dox', '~> 1.1', require: false
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   gem 'faker', '~> 2.7'
-  gem 'json_matchers', '~> 0.11.1', require: 'json_matchers/rspec'
   gem 'rspec_file_chef', '~> 0.1.2'
-  gem 'rspec-rails', '~> 3.9'
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'simplecov', '~> 0.13'
 end
