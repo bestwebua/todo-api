@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Api::DocSelectorService do
@@ -8,7 +10,7 @@ RSpec.describe Api::DocSelectorService do
 
   describe '.call' do
     it 'returns path to static html file in public/docs' do
-      expect(described_class.call(controller_object).to_s).to match /docs\/v1.html/
+      expect(described_class.call(controller_object).to_s).to match %r{docs/v1.html}
     end
   end
 end

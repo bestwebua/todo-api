@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Auth
   class Error422MessageService
     def self.call(error)

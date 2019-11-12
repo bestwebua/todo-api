@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'simplecov'
 require 'rspec_file_chef'
 
 SimpleCov.start do
   add_filter 'spec/'
 end
-
 
 RSpec.configure do |config|
   RspecFileChef::FileChef.configure do |configuration|

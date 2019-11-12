@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'dox'
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 
@@ -27,7 +29,7 @@ Dir[Rails.root.join('spec/docs/**/*.rb')].each { |file| require file }
 Dox.configure do |config|
   config.header_file_path = Rails.root.join('spec/docs/v1/descriptions/header.md')
   config.desc_folder_path = Rails.root.join('spec/docs/v1/descriptions')
-  config.headers_whitelist = ['Accept', 'Authorization']
+  config.headers_whitelist = %w[Accept Authorization]
 end
 
 JsonMatchers.schema_root = 'spec/support/schemas'
@@ -52,6 +54,6 @@ RSpec.configure do |config|
       else
         request
       end
-      example.metadata[:response] = response
+    example.metadata[:response] = response
   end
 end

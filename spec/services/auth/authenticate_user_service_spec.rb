@@ -1,13 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Auth::AuthenticateUserService do
-  let(:user)                 { create :user, sign_out: true }
   subject(:invalid_auth_obj) { described_class.call(email: '', password: '') }
 
-  subject(:valid_auth_obj) do
+  let(:valid_auth_obj) do
     described_class.call(email: user.email, password: user.password)
     user.reload
   end
+
+  let(:user) { create :user, sign_out: true }
 
   describe '.call' do
     context 'valid credentials' do

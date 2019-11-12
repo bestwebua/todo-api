@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Comments
   class CreateCommand
     def self.call(task_object, comment_params)

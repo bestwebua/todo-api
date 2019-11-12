@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 include ActionDispatch::TestProcess
 
@@ -14,14 +16,14 @@ RSpec.describe Comment, type: :model do
 
     let(:user) { create :user }
     let(:project) { create :project }
-    let(:task)  { create :task }
+    let(:task) { create :task }
 
     it 'valid depending on file presence' do
-      expect(build :comment, image: image_file).to be_valid
+      expect(build(:comment, image: image_file)).to be_valid
     end
 
     it 'invalid depending on file presence' do
-      expect(build :comment, image: not_image_file).to be_invalid
+      expect(build(:comment, image: not_image_file)).to be_invalid
     end
   end
 end
