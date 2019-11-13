@@ -22,7 +22,6 @@ PreCommit:
     exclude:
       - 'db/structure.sql'
       - 'public/docs/v1/index.html'
-      - 'specs/docs/v1/docs.md'
 
   RailsBestPractices:
     enabled: true
