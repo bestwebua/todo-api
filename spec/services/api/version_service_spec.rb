@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Api::VersionService do
   let(:request) do
     Class.new do
-      define_method(:headers) { ; }
+      define_method(:headers) {}
     end.new
   end
 
@@ -23,11 +23,11 @@ RSpec.describe Api::VersionService do
   describe '#matches?' do
     let(:instance) { described_class.new('v1') }
 
-    context 'request contains defined api version' do
+    context 'when request contains defined api version' do
       specify { expect(instance.matches?(request)).to be(true) }
     end
 
-    context 'request not contains defined api version' do
+    context 'when request not contains defined api version' do
       let(:headers) { { accept: 'application/v2' } }
 
       specify { expect(instance.matches?(request)).to be(false) }

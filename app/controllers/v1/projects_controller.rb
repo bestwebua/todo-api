@@ -2,29 +2,28 @@
 
 module V1
   class ProjectsController < ApplicationController
-    before_action :init_project, only: %i[show update destroy]
+    before_action :project, only: %i[show update destroy]
 
     def index
-      @projects = current_user.projects
-      json_response(@projects)
+      json_response(current_user_projects)
     end
 
     def create
-      @project = current_user.projects.create!(project_params)
-      json_response(@project, :created)
+      project = current_user_projects.create!(project_params)
+      json_response(project, :created)
     end
 
     def show
-      json_response(@project)
+      json_response(project)
     end
 
     def update
-      @project.update(project_params)
-      json_response(@project)
+      project.update(project_params)
+      json_response(project)
     end
 
     def destroy
-      @project.destroy
+      project.destroy
       head :no_content
     end
 
@@ -38,8 +37,12 @@ module V1
       params.permit(:title)
     end
 
-    def init_project
+    def project
       @project = Project.find(params[:id])
+    end
+
+    def current_user_projects
+      current_user.projects
     end
   end
 end

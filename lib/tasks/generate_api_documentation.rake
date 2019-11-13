@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# :nocov:
 namespace :api do
   namespace :v1 do
     desc 'Generate API v1 documentation'
@@ -22,3 +23,4 @@ namespace :api do
     task docs: ['api:v1:apib', 'api:v1:html']
   end
 end
+# :nocov:

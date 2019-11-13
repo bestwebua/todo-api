@@ -2,6 +2,10 @@
 
 module Auth
   class AuthorizeRequestService
+    def self.call(headers = {})
+      new(headers).call
+    end
+
     def initialize(headers = {})
       @headers = headers
     end
@@ -10,18 +14,14 @@ module Auth
       { user: user }
     end
 
-    def self.call(headers = {})
-      new(headers).call
-    end
-
     private
 
     attr_reader :headers
 
     def user
       @user ||= user_by_auth_token if decoded_auth_token && not_sign_out_user
-    rescue ActiveRecord::RecordNotFound => e
-      raise ExceptionHandler::InvalidToken, ("#{Auth::MessageService.invalid_token} #{e.message}")
+    rescue ActiveRecord::RecordNotFound => error
+      raise ExceptionHandler::InvalidToken, ("#{Auth::MessageService.invalid_token} #{error.message}")
     end
 
     def decoded_auth_token
@@ -39,7 +39,8 @@ module Auth
     end
 
     def http_auth_header
-      return headers['Authorization'].split(' ').last if headers['Authorization'].present?
+      auth_headers = headers['Authorization']
+      return auth_headers.split(' ').last if auth_headers.present?
 
       raise ExceptionHandler::MissingToken, Auth::MessageService.missing_token
     end

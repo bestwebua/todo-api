@@ -13,7 +13,7 @@ RSpec.describe 'V1::Authentication API', type: :request do
   describe 'POST /api/auth/sign_in' do
     include Docs::V1::Authentication::SignIn
 
-    context 'request is valid' do
+    context 'when request is valid' do
       before { post '/api/auth/sign_in', params: valid_credentials, headers: headers }
 
       specify { expect(response).to have_http_status(:ok) }
@@ -24,7 +24,7 @@ RSpec.describe 'V1::Authentication API', type: :request do
       end
     end
 
-    context 'request is invalid' do
+    context 'when request is invalid' do
       before { post '/api/auth/sign_in', params: invalid_credentials, headers: headers }
 
       specify { expect(response).to have_http_status(:unauthorized) }
@@ -41,7 +41,7 @@ RSpec.describe 'V1::Authentication API', type: :request do
 
     before { get '/api/auth/sign_out', headers: valid_headers }
 
-    context 'status code 204' do
+    context 'when status code 204' do
       specify { expect(response).to have_http_status(:no_content) }
 
       it 'sign out', :dox do
@@ -49,7 +49,7 @@ RSpec.describe 'V1::Authentication API', type: :request do
       end
     end
 
-    context 'current token should be expired' do
+    context 'when current token should be expired' do
       before { get '/api/projects', headers: valid_headers }
 
       it 'returns status code 422' do

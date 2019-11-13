@@ -20,7 +20,7 @@
     + Body
 
             {
-              "email": "weldon_moriette@runte.io",
+              "email": "luis@christiansen.name",
               "password": "abc"
             }
 
@@ -33,7 +33,7 @@
     + Body
 
             {
-              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjkzLCJleHAiOjE1NzM3MTMwNzh9.IhJMwypmSTiF-yFdNGMcEdSI8skyHN8V5j0pizeisEA"
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTI1LCJleHAiOjE1ODE4ODMxNjZ9.Uir1gE1BdGACKOgII-XHBdUdElXf3_pd1oTKTe3uH2g"
             }
 
 + Request sign in fails
@@ -47,8 +47,8 @@
     + Body
 
             {
-              "email": "carey_abernathy@dooley.net",
-              "password": "O2cThJ322gE"
+              "email": "german_yundt@jenkins.com",
+              "password": "YtZoJ70cV6oG4p"
             }
 
 + Response 401
@@ -72,7 +72,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk1LCJleHAiOjE1NzM3MTMwNzh9.hLyqnXahb-8EARGe_tjkWNL-wx1Wfn6B7jvFzVWYCqA
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTI3LCJleHAiOjE1ODE4ODMxNjZ9.VA7wUE1Fd3saUbuiSOiCurRruNW0uUrbcOPM1Fk54q4
             Content-Type: application/json
 
 + Response 204
@@ -91,7 +91,7 @@
     + Body
 
             {
-              "email": "gracia@ritchieconnelly.net",
+              "email": "liberty.braun@hane.biz",
               "password": "abc",
               "password_confirmation": "abc"
             }
@@ -106,7 +106,7 @@
 
             {
               "message": "Account created successfully",
-              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE4LCJleHAiOjE1NzM3MTMwNzh9.KI7G8Ao7_jNL7d1EoGgP1IUww2wr_q24VNJIquCUvug"
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTUwLCJleHAiOjE1ODE4ODMxNjZ9.ysfysuVi8wlfXFE44iR-TUZIJcB4c_BhN4wOapOeqZA"
             }
 
 + Request sign up fails
@@ -138,16 +138,16 @@
 ### Get comments [GET /api/projects/{project_id}/tasks/{task_id}/comments]
 
 + Parameters
-    + project_id: `1366` (number, required)
-    + task_id: `1403` (number, required)
+    + project_id: `3827` (number, required)
+    + task_id: `4161` (number, required)
 
 + Request gets comments
-**GET**&nbsp;&nbsp;`/api/projects/1366/tasks/1403/comments`
+**GET**&nbsp;&nbsp;`/api/projects/3827/tasks/4161/comments`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk2LCJleHAiOjE1NzM3MTMwNzh9.Umei0BebrCiOJgTdHmFbpiy9MU4WPhOYmHBs3YxeACU
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTI4LCJleHAiOjE1ODE4ODMxNjZ9._eM4uAWqjRaUKvF9RQo4pcsbv5gO81wwtRbBeysSvQE
             Content-Type: application/json
 
 + Response 200
@@ -161,23 +161,23 @@
             {
               "data": [
                 {
-                  "id": "494",
+                  "id": "1518",
                   "type": "comment",
                   "attributes": {
-                    "id": 494,
-                    "body": "non",
+                    "id": 1518,
+                    "body": "temporibus",
                     "img_src": null,
-                    "created_at": "2019-11-13T06:31:18.528Z"
+                    "created_at": "2020-02-15T19:59:26.420Z"
                   }
                 },
                 {
-                  "id": "495",
+                  "id": "1519",
                   "type": "comment",
                   "attributes": {
-                    "id": 495,
-                    "body": "nostrum",
+                    "id": 1519,
+                    "body": "quibusdam",
                     "img_src": null,
-                    "created_at": "2019-11-13T06:31:18.530Z"
+                    "created_at": "2020-02-15T19:59:26.422Z"
                   }
                 }
               ]
@@ -186,16 +186,16 @@
 ### Create comment [POST /api/projects/{project_id}/tasks/{task_id}/comments]
 
 + Parameters
-    + project_id: `1367` (number, required)
-    + task_id: `1405` (number, required)
+    + project_id: `3828` (number, required)
+    + task_id: `4163` (number, required)
 
 + Request create a comment
-**POST**&nbsp;&nbsp;`/api/projects/1367/tasks/1405/comments`
+**POST**&nbsp;&nbsp;`/api/projects/3828/tasks/4163/comments`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk3LCJleHAiOjE1NzM3MTMwNzh9.ovllH8cG0hIuvULEq6ap3NuFnT_h0fjogOqPCAe5Q9s
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTI5LCJleHAiOjE1ODE4ODMxNjZ9.zIzp6mDRYuEq7hyBiNKXsjQXShSAZOY0E3EXF7uTHy0
             Content-Type: application/json
 
     + Body
@@ -214,29 +214,29 @@
 
             {
               "data": {
-                "id": "498",
+                "id": "1522",
                 "type": "comment",
                 "attributes": {
-                  "id": 498,
+                  "id": 1522,
                   "body": "Comment",
                   "img_src": null,
-                  "created_at": "2019-11-13T06:31:18.563Z"
+                  "created_at": "2020-02-15T19:59:26.450Z"
                 }
               }
             }
 
 + Request create a comment with image
-**POST**&nbsp;&nbsp;`/api/projects/1368/tasks/1407/comments`
+**POST**&nbsp;&nbsp;`/api/projects/3829/tasks/4165/comments`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk4LCJleHAiOjE1NzM3MTMwNzh9.XYXreJVwxP3r22cAP-Lv24hFkGDBcBAlN1TpC7xCfg4
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTMwLCJleHAiOjE1ODE4ODMxNjZ9.Kq8IDqkYWUy-PxEbkZftJjhj38VJer3mp5RXkYMV5QQ
             Content-Type: multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1
 
     + Body
 
-            {"body":"Comment","image":{"tempfile":"#\u003cFile:0x000056384eee0980\u003e","original_filename":"ror.png","content_type":"","headers":"Content-Disposition: form-data; name=\"image\"; filename=\"ror.png\"\r\nContent-Type: \r\nContent-Length: 24879\r\n"}}
+            {"body":"Comment","image":{"tempfile":"#\u003cFile:0x0000559aa34aec30\u003e","original_filename":"ror.png","content_type":"","headers":"Content-Disposition: form-data; name=\"image\"; filename=\"ror.png\"\r\nContent-Type: \r\nContent-Length: 24879\r\n"}}
 
 + Response 201
 
@@ -248,24 +248,24 @@
 
             {
               "data": {
-                "id": "501",
+                "id": "1525",
                 "type": "comment",
                 "attributes": {
-                  "id": 501,
+                  "id": 1525,
                   "body": "Comment",
-                  "img_src": "http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBYdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--467a5416e7c29204d988c2332f56e4ab91b4c53e/ror.png",
-                  "created_at": "2019-11-13T06:31:18.631Z"
+                  "img_src": "http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NCIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80eb42827d2864dd473a18f63f82a992612a140a/ror.png",
+                  "created_at": "2020-02-15T19:59:26.495Z"
                 }
               }
             }
 
 + Request create a comment fails
-**POST**&nbsp;&nbsp;`/api/projects/1369/tasks/1409/comments`
+**POST**&nbsp;&nbsp;`/api/projects/3830/tasks/4167/comments`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk5LCJleHAiOjE1NzM3MTMwNzh9.uvjYWhishF5IbMGFueaCfYesPG3u0ZwIeH54KpbV9dc
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTMxLCJleHAiOjE1ODE4ODMxNjZ9.eJLu6lRajKcctWurBt1KlZnlM5xUG7k-R1GWelxY36w
             Content-Type: application/json
 
     + Body
@@ -274,7 +274,7 @@
               "body": null,
               "image": {
                 "original_filename": "ror.txt",
-                "tempfile": "#<File:0x000056384c122188>",
+                "tempfile": "#<File:0x0000559aa3b14ca0>",
                 "content_type": null
               }
             }
@@ -294,17 +294,17 @@
 ### Delete comment [DELETE /api/projects/{project_id}/tasks/{task_id}/comments/{id}]
 
 + Parameters
-    + project_id: `1370` (number, required)
-    + task_id: `1411` (number, required)
-    + id: `504` (number, required)
+    + project_id: `3831` (number, required)
+    + task_id: `4169` (number, required)
+    + id: `1528` (number, required)
 
 + Request delete a comment
-**DELETE**&nbsp;&nbsp;`/api/projects/1370/tasks/1411/comments/504`
+**DELETE**&nbsp;&nbsp;`/api/projects/3831/tasks/4169/comments/1528`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAwLCJleHAiOjE1NzM3MTMwNzh9.l7u9JskLWsN9slNEpcPZQ00k1PfWhC6PdcieMpSl3xY
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTMyLCJleHAiOjE1ODE4ODMxNjZ9.hxiJ4fRm1DiLt7tNgUmynE-0TpfAcwLzMLBxCOeq_Bs
             Content-Type: application/json
 
 + Response 204
@@ -324,7 +324,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAxLCJleHAiOjE1NzM3MTMwNzh9.hJOcNQ-WTcYGAdxfJQI-_c8OSdXNxHpCx85zVyQkOlc
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTMzLCJleHAiOjE1ODE4ODMxNjZ9.bk2-elw2qaIUeixX4dZbRDrIb2bMh9NfCfkuxyRUn5E
             Content-Type: application/json
 
 + Response 200
@@ -338,13 +338,13 @@
             {
               "data": [
                 {
-                  "id": "1371",
+                  "id": "3832",
                   "type": "project",
                   "attributes": {
-                    "id": 1371,
-                    "title": "est",
-                    "created_at": "2019-11-13T06:31:18.708Z",
-                    "updated_at": "2019-11-13T06:31:18.708Z"
+                    "id": 3832,
+                    "title": "velit",
+                    "created_at": "2020-02-15T19:59:26.552Z",
+                    "updated_at": "2020-02-15T19:59:26.552Z"
                   },
                   "relationships": {
                     "tasks": {
@@ -355,13 +355,13 @@
                   }
                 },
                 {
-                  "id": "1372",
+                  "id": "3833",
                   "type": "project",
                   "attributes": {
-                    "id": 1372,
-                    "title": "maxime",
-                    "created_at": "2019-11-13T06:31:18.709Z",
-                    "updated_at": "2019-11-13T06:31:18.709Z"
+                    "id": 3833,
+                    "title": "id",
+                    "created_at": "2020-02-15T19:59:26.553Z",
+                    "updated_at": "2020-02-15T19:59:26.553Z"
                   },
                   "relationships": {
                     "tasks": {
@@ -383,14 +383,14 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAyLCJleHAiOjE1NzM3MTMwNzh9.Niohhb1kw1UhM9JQRjenHyJNk-KGFwCrZlIeCDhrVag
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTM0LCJleHAiOjE1ODE4ODMxNjZ9.41j9BtzyGgTBET9Ob1gmcNuMP5BVhdLV_QbpfAe4tb0
             Content-Type: application/json
 
     + Body
 
             {
               "title": "Project Title",
-              "user_id": 1302
+              "user_id": 3934
             }
 
 + Response 201
@@ -403,13 +403,13 @@
 
             {
               "data": {
-                "id": "1375",
+                "id": "3836",
                 "type": "project",
                 "attributes": {
-                  "id": 1375,
+                  "id": 3836,
                   "title": "Project Title",
-                  "created_at": "2019-11-13T06:31:18.730Z",
-                  "updated_at": "2019-11-13T06:31:18.730Z"
+                  "created_at": "2020-02-15T19:59:26.572Z",
+                  "updated_at": "2020-02-15T19:59:26.572Z"
                 },
                 "relationships": {
                   "tasks": {
@@ -427,7 +427,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAzLCJleHAiOjE1NzM3MTMwNzh9.6jN5Z8oxADjtvOgtVwI1nPEnTVOobNZPK0WEnMNyceU
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTM1LCJleHAiOjE1ODE4ODMxNjZ9.HCJj11h5YMO639lNz5DLq2NkHLzs8pHo-aET5CfRNEs
             Content-Type: application/json
 
     + Body
@@ -451,15 +451,15 @@
 ### Read project [GET /api/projects/{id}]
 
 + Parameters
-    + id: `1378` (number, required)
+    + id: `3839` (number, required)
 
 + Request show the project
-**GET**&nbsp;&nbsp;`/api/projects/1378`
+**GET**&nbsp;&nbsp;`/api/projects/3839`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA0LCJleHAiOjE1NzM3MTMwNzh9.ktjB-1-o7K7pZNmTKPX5_kDdKS9NoIgo5Xx-93DcDIQ
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTM2LCJleHAiOjE1ODE4ODMxNjZ9.3ltbvHgJAayfUcUnGnBdP_RzxkFVOoegjKWVpdLTpQs
             Content-Type: application/json
 
 + Response 200
@@ -472,13 +472,13 @@
 
             {
               "data": {
-                "id": "1378",
+                "id": "3839",
                 "type": "project",
                 "attributes": {
-                  "id": 1378,
-                  "title": "itaque",
-                  "created_at": "2019-11-13T06:31:18.748Z",
-                  "updated_at": "2019-11-13T06:31:18.748Z"
+                  "id": 3839,
+                  "title": "voluptatem",
+                  "created_at": "2020-02-15T19:59:26.591Z",
+                  "updated_at": "2020-02-15T19:59:26.591Z"
                 },
                 "relationships": {
                   "tasks": {
@@ -496,7 +496,7 @@
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA1LCJleHAiOjE1NzM3MTMwNzh9.4DjjDHuDRu2r9ye1oh1dZ07u432eajgsZwwEyqRkz3s
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTM3LCJleHAiOjE1ODE4ODMxNjZ9.JPeXYRWrIsfrl6WvGudSgaLNMywMNxxr85XkuA1bjaQ
             Content-Type: application/json
 
 + Response 404
@@ -514,15 +514,15 @@
 ### Update project [PATCH /api/projects/{id}]
 
 + Parameters
-    + id: `1382` (number, required)
+    + id: `3843` (number, required)
 
 + Request update a project
-**PATCH**&nbsp;&nbsp;`/api/projects/1382`
+**PATCH**&nbsp;&nbsp;`/api/projects/3843`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA2LCJleHAiOjE1NzM3MTMwNzh9.wXuE_4oZ6xGuoE8FndidWErlTaTQOC5rE9HUEaHMIi4
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTM4LCJleHAiOjE1ODE4ODMxNjZ9.LYGk1k-Qaglo1CCmEyYSPvdu3Yj2tvoh97cFe8DeCUQ
             Content-Type: application/json
 
     + Body
@@ -541,13 +541,13 @@
 
             {
               "data": {
-                "id": "1382",
+                "id": "3843",
                 "type": "project",
                 "attributes": {
-                  "id": 1382,
+                  "id": 3843,
                   "title": "New Title",
-                  "created_at": "2019-11-13T06:31:18.768Z",
-                  "updated_at": "2019-11-13T06:31:18.774Z"
+                  "created_at": "2020-02-15T19:59:26.614Z",
+                  "updated_at": "2020-02-15T19:59:26.620Z"
                 },
                 "relationships": {
                   "tasks": {
@@ -562,15 +562,15 @@
 ### Delete project [DELETE /api/projects/{id}]
 
 + Parameters
-    + id: `1384` (number, required)
+    + id: `3845` (number, required)
 
 + Request delete a project
-**DELETE**&nbsp;&nbsp;`/api/projects/1384`
+**DELETE**&nbsp;&nbsp;`/api/projects/3845`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA3LCJleHAiOjE1NzM3MTMwNzh9.yafy2WFn7m9YEhlt8nbWSud35CfekbuRz6gvBj0olA0
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTM5LCJleHAiOjE1ODE4ODMxNjZ9.W2gfQqW3wAoxT89enZ54vzCWImB5UF8zqhx71Mvo5CQ
             Content-Type: application/json
 
 + Response 204
@@ -584,15 +584,15 @@
 ### Get tasks [GET /api/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `1386` (number, required)
+    + project_id: `3847` (number, required)
 
 + Request gets tasks
-**GET**&nbsp;&nbsp;`/api/projects/1386/tasks`
+**GET**&nbsp;&nbsp;`/api/projects/3847/tasks`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA4LCJleHAiOjE1NzM3MTMwNzh9.esLKBdRj9qVIoS1VK8Ip0wbLFhriTg6huoeT7AVl5-c
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQwLCJleHAiOjE1ODE4ODMxNjZ9.iE3BMuUtaCpAtQU_v9dKAbiXQFBxcigKgNfOqjszcYA
             Content-Type: application/json
 
 + Response 200
@@ -606,16 +606,16 @@
             {
               "data": [
                 {
-                  "id": "1413",
+                  "id": "4171",
                   "type": "task",
                   "attributes": {
-                    "id": 1413,
-                    "name": "ratione",
+                    "id": 4171,
+                    "name": "doloribus",
                     "done": false,
                     "deadline": null,
                     "position": 1,
-                    "created_at": "2019-11-13T06:31:18.794Z",
-                    "updated_at": "2019-11-13T06:31:18.794Z"
+                    "created_at": "2020-02-15T19:59:26.644Z",
+                    "updated_at": "2020-02-15T19:59:26.644Z"
                   },
                   "relationships": {
                     "comments": {
@@ -626,16 +626,16 @@
                   }
                 },
                 {
-                  "id": "1414",
+                  "id": "4172",
                   "type": "task",
                   "attributes": {
-                    "id": 1414,
-                    "name": "fugiat",
+                    "id": 4172,
+                    "name": "et",
                     "done": false,
                     "deadline": null,
                     "position": 2,
-                    "created_at": "2019-11-13T06:31:18.796Z",
-                    "updated_at": "2019-11-13T06:31:18.796Z"
+                    "created_at": "2020-02-15T19:59:26.646Z",
+                    "updated_at": "2020-02-15T19:59:26.646Z"
                   },
                   "relationships": {
                     "comments": {
@@ -651,22 +651,22 @@
 ### Create task [POST /api/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `1387` (number, required)
+    + project_id: `3848` (number, required)
 
 + Request create a task
-**POST**&nbsp;&nbsp;`/api/projects/1387/tasks`
+**POST**&nbsp;&nbsp;`/api/projects/3848/tasks`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA5LCJleHAiOjE1NzM3MTMwNzh9.lR7J2Cx8DTOkHmR1BAC1DkcdaBUukSTF1yBp94-xiNY
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQxLCJleHAiOjE1ODE4ODMxNjZ9.J0hOENtd_3HkyWMV9hlrauG5hoW4ful211FgHPmwF1Q
             Content-Type: application/json
 
     + Body
 
             {
               "name": "Task Name",
-              "deadline": "2019-11-13T06:31:18.814Z"
+              "deadline": "2020-02-15T19:59:26.667Z"
             }
 
 + Response 201
@@ -679,16 +679,16 @@
 
             {
               "data": {
-                "id": "1417",
+                "id": "4175",
                 "type": "task",
                 "attributes": {
-                  "id": 1417,
+                  "id": 4175,
                   "name": "Task Name",
                   "done": false,
-                  "deadline": "2019-11-13",
+                  "deadline": "2020-02-15",
                   "position": 3,
-                  "created_at": "2019-11-13T06:31:18.818Z",
-                  "updated_at": "2019-11-13T06:31:18.818Z"
+                  "created_at": "2020-02-15T19:59:26.671Z",
+                  "updated_at": "2020-02-15T19:59:26.671Z"
                 },
                 "relationships": {
                   "comments": {
@@ -701,12 +701,12 @@
             }
 
 + Request does not create a task
-**POST**&nbsp;&nbsp;`/api/projects/1388/tasks`
+**POST**&nbsp;&nbsp;`/api/projects/3849/tasks`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzEwLCJleHAiOjE1NzM3MTMwNzh9.WaPDNiyUJTMB84qpXXns3y_N_7j9l9jX0tCfinZqkvY
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQyLCJleHAiOjE1ODE4ODMxNjZ9.rw72I2snDljPP9j_47QD-PpnOkfvoV50nNAYvpG5hW0
             Content-Type: application/json
 
     + Body
@@ -730,16 +730,16 @@
 ### Read task [GET /api/projects/{project_id}/tasks/{id}]
 
 + Parameters
-    + project_id: `1389` (number, required)
-    + id: `1420` (number, required)
+    + project_id: `3850` (number, required)
+    + id: `4178` (number, required)
 
 + Request show the task
-**GET**&nbsp;&nbsp;`/api/projects/1389/tasks/1420`
+**GET**&nbsp;&nbsp;`/api/projects/3850/tasks/4178`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzExLCJleHAiOjE1NzM3MTMwNzh9.Su1mtkBe4hNxWlKsTjQ0I8F8PLX08bi6Ufcj30_GLhQ
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQzLCJleHAiOjE1ODE4ODMxNjZ9.5xJGCQSTpszva1sgF5gEdQnpO8FqHexIqkok8J3QgKw
             Content-Type: application/json
 
 + Response 200
@@ -752,16 +752,16 @@
 
             {
               "data": {
-                "id": "1420",
+                "id": "4178",
                 "type": "task",
                 "attributes": {
-                  "id": 1420,
-                  "name": "quod",
+                  "id": 4178,
+                  "name": "est",
                   "done": false,
                   "deadline": null,
                   "position": 1,
-                  "created_at": "2019-11-13T06:31:18.840Z",
-                  "updated_at": "2019-11-13T06:31:18.840Z"
+                  "created_at": "2020-02-15T19:59:26.696Z",
+                  "updated_at": "2020-02-15T19:59:26.696Z"
                 },
                 "relationships": {
                   "comments": {
@@ -774,12 +774,12 @@
             }
 
 + Request task not found
-**GET**&nbsp;&nbsp;`/api/projects/1390/tasks/0`
+**GET**&nbsp;&nbsp;`/api/projects/3851/tasks/0`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzEyLCJleHAiOjE1NzM3MTMwNzh9.UM-TFG_wQOdonvzfXgHt1gAV61aNyUbbG5RdrL21AzQ
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQ0LCJleHAiOjE1ODE4ODMxNjZ9.X1t4MzJVB4rHYoi7zRoINcQKfSoJWGj_HkC1m4Nhw-c
             Content-Type: application/json
 
 + Response 404
@@ -797,23 +797,23 @@
 ### Update task [PATCH /api/projects/{project_id}/tasks/{id}]
 
 + Parameters
-    + project_id: `1391` (number, required)
-    + id: `1424` (number, required)
+    + project_id: `3852` (number, required)
+    + id: `4182` (number, required)
 
 + Request update a task
-**PATCH**&nbsp;&nbsp;`/api/projects/1391/tasks/1424`
+**PATCH**&nbsp;&nbsp;`/api/projects/3852/tasks/4182`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzEzLCJleHAiOjE1NzM3MTMwNzh9.BGL_RkhYXf5BRvQ_xXZyU_IOZe7U1Ob7QgwP4rPGwDM
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQ1LCJleHAiOjE1ODE4ODMxNjZ9.pEGzFkAERyLAxK8YbEx2jnM4MWzvyxEzcQsiF7NuW20
             Content-Type: application/json
 
     + Body
 
             {
               "name": "Task Name",
-              "deadline": "2019-11-13T06:31:18.870Z"
+              "deadline": "2020-02-15T19:59:26.730Z"
             }
 
 + Response 200
@@ -826,16 +826,16 @@
 
             {
               "data": {
-                "id": "1424",
+                "id": "4182",
                 "type": "task",
                 "attributes": {
-                  "id": 1424,
+                  "id": 4182,
                   "name": "Task Name",
                   "done": false,
-                  "deadline": "2019-11-13",
+                  "deadline": "2020-02-15",
                   "position": 1,
-                  "created_at": "2019-11-13T06:31:18.866Z",
-                  "updated_at": "2019-11-13T06:31:18.874Z"
+                  "created_at": "2020-02-15T19:59:26.726Z",
+                  "updated_at": "2020-02-15T19:59:26.735Z"
                 },
                 "relationships": {
                   "comments": {
@@ -848,19 +848,19 @@
             }
 
 + Request update a task fails
-**PATCH**&nbsp;&nbsp;`/api/projects/1392/tasks/1426`
+**PATCH**&nbsp;&nbsp;`/api/projects/3853/tasks/4184`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE0LCJleHAiOjE1NzM3MTMwNzh9.4ol1vlsOvy5vcC94lMqWl76GWr1nKhIyodbkHqXAcgA
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQ2LCJleHAiOjE1ODE4ODMxNjZ9.LR8U6AyRTIeawwy6Cr8BR9j9zUzItmsglfmPWNV3vSE
             Content-Type: application/json
 
     + Body
 
             {
               "name": "Task Name",
-              "deadline": "2019-11-13T06:31:18.885Z"
+              "deadline": "2020-02-15T19:59:26.749Z"
             }
 
 + Response 422
@@ -878,16 +878,16 @@
 ### Delete task [DELETE /api/projects/{project_id}/tasks/{id}]
 
 + Parameters
-    + project_id: `1393` (number, required)
-    + id: `1428` (number, required)
+    + project_id: `3854` (number, required)
+    + id: `4186` (number, required)
 
 + Request delete a task
-**DELETE**&nbsp;&nbsp;`/api/projects/1393/tasks/1428`
+**DELETE**&nbsp;&nbsp;`/api/projects/3854/tasks/4186`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE1LCJleHAiOjE1NzM3MTMwNzh9.FVjw4CDxMb5xh7jQpHL18K850pO26UANrJhuG5yMyxQ
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQ3LCJleHAiOjE1ODE4ODMxNjZ9.J6g2q0NurLUEvspii_yAKp3-tXc_q_FT0Z9J68eMVs8
             Content-Type: application/json
 
 + Response 204
@@ -895,16 +895,16 @@
 ### Complete task [PATCH /api/projects/{project_id}/tasks/{id}/complete]
 
 + Parameters
-    + project_id: `1394` (number, required)
-    + id: `1430` (number, required)
+    + project_id: `3855` (number, required)
+    + id: `4188` (number, required)
 
 + Request trigger task status
-**PATCH**&nbsp;&nbsp;`/api/projects/1394/tasks/1430/complete`
+**PATCH**&nbsp;&nbsp;`/api/projects/3855/tasks/4188/complete`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE2LCJleHAiOjE1NzM3MTMwNzh9.oey6lgdeR21z2eamWtHujqOLsWfeSvqvvMrc5haJ9YQ
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQ4LCJleHAiOjE1ODE4ODMxNjZ9.QsQ1l9Y82zKmNwMH-fN81DINJGA1AQHTDDS1pUBe3E0
             Content-Type: application/json
 
 + Response 200
@@ -917,16 +917,16 @@
 
             {
               "data": {
-                "id": "1430",
+                "id": "4188",
                 "type": "task",
                 "attributes": {
-                  "id": 1430,
-                  "name": "velit",
+                  "id": 4188,
+                  "name": "at",
                   "done": true,
                   "deadline": null,
                   "position": 1,
-                  "created_at": "2019-11-13T06:31:18.926Z",
-                  "updated_at": "2019-11-13T06:31:18.933Z"
+                  "created_at": "2020-02-15T19:59:26.797Z",
+                  "updated_at": "2020-02-15T19:59:26.805Z"
                 },
                 "relationships": {
                   "comments": {
@@ -941,16 +941,16 @@
 ### Up task [PATCH /api/projects/{project_id}/tasks/{id}/position]
 
 + Parameters
-    + project_id: `1395` (number, required)
-    + id: `1433` (number, required)
+    + project_id: `3856` (number, required)
+    + id: `4191` (number, required)
 
 + Request change task position
-**PATCH**&nbsp;&nbsp;`/api/projects/1395/tasks/1433/position`
+**PATCH**&nbsp;&nbsp;`/api/projects/3856/tasks/4191/position`
 
     + Headers
 
             Accept: application/v1
-            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE3LCJleHAiOjE1NzM3MTMwNzh9.1suvC0rWXSKZN9HmReOFAG4652ytHpq32KQmFOdFses
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozOTQ5LCJleHAiOjE1ODE4ODMxNjZ9.xWuLr-7blCvbx-DYYzu5ZYGXqadvixTI84lSyYipepM
             Content-Type: application/json
 
 + Response 200
@@ -963,16 +963,16 @@
 
             {
               "data": {
-                "id": "1433",
+                "id": "4191",
                 "type": "task",
                 "attributes": {
-                  "id": 1433,
-                  "name": "omnis",
+                  "id": 4191,
+                  "name": "totam",
                   "done": false,
                   "deadline": null,
                   "position": 1,
-                  "created_at": "2019-11-13T06:31:18.943Z",
-                  "updated_at": "2019-11-13T06:31:18.954Z"
+                  "created_at": "2020-02-15T19:59:26.817Z",
+                  "updated_at": "2020-02-15T19:59:26.831Z"
                 },
                 "relationships": {
                   "comments": {

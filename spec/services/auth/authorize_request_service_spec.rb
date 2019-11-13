@@ -11,20 +11,20 @@ RSpec.describe Auth::AuthorizeRequestService do
   let(:invalid_request_obj) { described_class.call }
 
   describe '.call' do
-    context 'valid request' do
+    context 'when valid request' do
       it 'returns user object' do
         expect(request_obj[:user]).to eq(user)
       end
     end
 
-    context 'invalid request' do
-      context 'missing token' do
+    context 'when invalid request' do
+      context 'when missing token' do
         it 'raises a MissingToken error' do
           expect { invalid_request_obj }.to raise_error(ExceptionHandler::MissingToken, 'Missing token')
         end
       end
 
-      context 'invalid token' do
+      context 'when invalid token' do
         subject(:invalid_request_obj) do
           described_class.call('Authorization' => token_generator(5))
         end
@@ -34,7 +34,7 @@ RSpec.describe Auth::AuthorizeRequestService do
         end
       end
 
-      context 'expired token' do
+      context 'when expired token' do
         subject(:request_obj) { described_class.call(header) }
 
         let(:header) { { 'Authorization' => expired_token_generator(user.id) } }
@@ -45,7 +45,7 @@ RSpec.describe Auth::AuthorizeRequestService do
       end
     end
 
-    context 'fake token' do
+    context 'when fake token' do
       subject(:invalid_request_obj) { described_class.call(header) }
 
       let(:header) { { 'Authorization' => 'foobar' } }

@@ -15,7 +15,7 @@ RSpec.describe 'V1::Documentation', type: :request do
 
   describe 'GET /api/documentation' do
     describe 'returns documentation' do
-      context 'without headers' do
+      context 'when without headers' do
         before { get '/api/documentation' }
 
         it 'returns status code 200' do
@@ -23,11 +23,11 @@ RSpec.describe 'V1::Documentation', type: :request do
         end
 
         it 'render static html' do
-          expect(response.body).to match /<!DOCTYPE html>/
+          expect(response.body).to include('<!DOCTYPE html>')
         end
       end
 
-      context 'with existing version' do
+      context 'when with existing version' do
         let(:headers) { { accept: 'application/v1' } }
 
         before { get '/api/documentation', headers: headers }
@@ -37,13 +37,13 @@ RSpec.describe 'V1::Documentation', type: :request do
         end
 
         it 'render static html' do
-          expect(response.body).to match /<!DOCTYPE html>/
+          expect(response.body).to include('<!DOCTYPE html>')
         end
       end
     end
 
     describe 'not returns documentation' do
-      context 'static documentation file not exists' do
+      context 'when static documentation file not exists' do
         before do
           allow(Api::DocSelectorService).to receive(:call).and_return('v42')
           get '/api/documentation'
@@ -54,7 +54,7 @@ RSpec.describe 'V1::Documentation', type: :request do
         end
 
         it 'returns error message' do
-          expect(body).to match /Documentation api-file not found./
+          expect(body).to include('Documentation api-file not found.')
         end
       end
     end
