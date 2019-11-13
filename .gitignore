@@ -7,21 +7,30 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore simplecov
-
-/coverage/
+# Ignore secrets
+/config/application.yml
+/config/database.yml
+/config/cable.yml
+/config/master.key
 
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
+!/tmp/pids/.keep
 !/tmp/.keep
+.rvmrc
 
-# Ignore uploaded files in development
-/storage/*
-!/storage/.keep
-
+.DS_Store
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
+# Ignore spec files
+/spec/examples.txt
+
+# Ignore test coverage info
+/coverage/*
+
+# Ignore RubyMine IDE configs
+/.idea
+
+/vendor/bundle

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'V1::Tasks API', type: :request do
@@ -12,7 +14,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
   let(:headers)          { valid_headers }
   let(:updated_task)     { Task.find(id) }
   let(:next_task)        { Task.find(next_id) }
-  let(:valid_attributes) { { name: 'Task Name', deadline: Time.now }.to_json }
+  let(:valid_attributes) { { name: 'Task Name', deadline: Time.zone.now }.to_json }
 
   describe 'GET /api/projects/:project_id/tasks' do
     include Docs::V1::Tasks::Index
@@ -20,16 +22,16 @@ RSpec.describe 'V1::Tasks API', type: :request do
     before { get "/api/projects/#{project_id}/tasks", headers: headers }
 
     context 'project exists' do
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns all project tasks' do
+        expect(json).to match_json_schema('tasks/index')
       end
 
-      it 'returns all project tasks' do
-        expect(json.size).to eq(2)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(:ok)
       end
 
       it 'gets tasks', :dox do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -37,7 +39,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       let(:project_id) { 0 }
 
       it 'returns status code 404' do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
 
       it 'returns a not found message' do
@@ -52,17 +54,16 @@ RSpec.describe 'V1::Tasks API', type: :request do
     context 'request is valid' do
       before { post "/api/projects/#{project_id}/tasks", params: valid_attributes, headers: headers }
 
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+      it 'creates the task' do
+        expect(json).to match_json_schema('tasks/create')
       end
 
-      it 'creates the task' do
-        expect(json['name']).to eq('Task Name')
-        expect(json['position']).not_to be_nil
+      it 'returns status code 201' do
+        expect(response).to have_http_status(:created)
       end
 
       it 'create a task', :dox do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
     end
 
@@ -71,17 +72,16 @@ RSpec.describe 'V1::Tasks API', type: :request do
         post "/api/projects/#{project_id}/tasks", params: { name: nil }.to_json, headers: headers
       end
 
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+      it 'returns error message' do
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
 
-      it 'creates the task' do
-        expect(json['name']).to be_nil
-        expect(json['position']).to be_nil
+      it 'returns status code 422' do
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it 'does not create a task', :dox do
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -92,16 +92,16 @@ RSpec.describe 'V1::Tasks API', type: :request do
     before { get "/api/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     context 'project task exists' do
-      it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+      it 'returns the task' do
+        expect(json).to match_json_schema('tasks/show')
       end
 
-      it 'returns the task' do
-        expect(json['id']).to eq(id)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(:ok)
       end
 
       it 'show the task', :dox do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -109,7 +109,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       let(:id) { 0 }
 
       it 'returns status code 404' do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
 
       it 'returns a not found message' do
@@ -117,7 +117,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
 
       it 'task not found', :dox do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
     end
   end
@@ -129,16 +129,16 @@ RSpec.describe 'V1::Tasks API', type: :request do
       before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       context 'task incomplete' do
-        it 'returns status code 200' do
-          expect(response).to have_http_status(200)
+        it 'updates the task' do
+          expect(json).to match_json_schema('tasks/update')
         end
 
-        it 'updates the task' do
-          expect(updated_task.name).to eq('Task Name')
+        it 'returns status code 200' do
+          expect(response).to have_http_status(:ok)
         end
 
         it 'update a task', :dox do
-          expect(response).to have_http_status(200)
+          expect(response).to have_http_status(:ok)
         end
       end
 
@@ -149,7 +149,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
         end
 
         it 'returns status code 422' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns error message' do
@@ -157,17 +157,18 @@ RSpec.describe 'V1::Tasks API', type: :request do
         end
 
         it 'update a task fails', :dox do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
       end
     end
 
     context 'task does not exist' do
       let(:id) { 0 }
+
       before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
       it 'returns status code 404' do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
 
       it 'returns a not found message' do
@@ -182,11 +183,11 @@ RSpec.describe 'V1::Tasks API', type: :request do
     before { delete "/api/projects/#{project_id}/tasks/#{id}", headers: headers }
 
     it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(:no_content)
     end
 
     it 'delete a task', :dox do
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(:no_content)
     end
   end
 
@@ -197,7 +198,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
     context 'mark as complete' do
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'updates the task' do
@@ -205,7 +206,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
 
       it 'trigger task status', :dox do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -213,7 +214,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       before { patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'updates the task' do
@@ -235,7 +236,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
 
       it 'move up current task position' do
-        expect { move_up_position_with_reload }.to change { next_task.position }.from(2).to(1)
+        expect { move_up_position_with_reload }.to change(next_task, :position).from(2).to(1)
       end
 
       it 'shift other task position' do
@@ -247,11 +248,11 @@ RSpec.describe 'V1::Tasks API', type: :request do
       before { move_up_position }
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'change task position', :dox do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
   end

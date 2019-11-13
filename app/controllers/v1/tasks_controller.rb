@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module V1
   class TasksController < ApplicationController
     before_action :init_project
@@ -37,16 +39,20 @@ module V1
 
     private
 
-      def task_params
-        params.permit(:name, :deadline)
-      end
+    def serializer
+      TaskSerializer
+    end
 
-      def init_project
-        @project = Project.find(params[:project_id])
-      end
+    def task_params
+      params.permit(:name, :deadline)
+    end
 
-      def init_project_task
-        @task = @project.tasks.find_by!(id: params[:id])
-      end
+    def init_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def init_project_task
+      @task = @project.tasks.find_by!(id: params[:id])
+    end
   end
 end

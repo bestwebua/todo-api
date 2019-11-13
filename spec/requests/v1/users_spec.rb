@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'V1::User API', type: :request do
@@ -14,7 +16,7 @@ RSpec.describe 'V1::User API', type: :request do
       before { post '/api/auth', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new user' do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
 
       it 'returns success message' do
@@ -26,7 +28,7 @@ RSpec.describe 'V1::User API', type: :request do
       end
 
       it 'sign up', :dox do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
     end
 
@@ -35,7 +37,7 @@ RSpec.describe 'V1::User API', type: :request do
         before { post '/api/auth', params: {}, headers: headers }
 
         it 'does not create a new user' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns failure message' do
@@ -43,7 +45,7 @@ RSpec.describe 'V1::User API', type: :request do
         end
 
         it 'sign up fails', :dox do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
       end
 
@@ -55,7 +57,7 @@ RSpec.describe 'V1::User API', type: :request do
         before { post '/api/auth', params: different_passwords.to_json, headers: headers }
 
         it 'does not create a new user' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns failure message' do
@@ -69,7 +71,7 @@ RSpec.describe 'V1::User API', type: :request do
         end
 
         it 'does not create a new user' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns failure message' do
@@ -83,7 +85,7 @@ RSpec.describe 'V1::User API', type: :request do
           post '/api/auth', params: valid_attributes.to_json, headers: headers
         end
 
-        specify { expect(response).to have_http_status(500) }
+        specify { expect(response).to have_http_status(:internal_server_error) }
         specify { expect(json['message']).to match(/secret_key_base not assigned/) }
       end
     end

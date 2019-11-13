@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
   has_many :projects, dependent: :destroy
-  validates_presence_of :email, :password_digest
+  validates :email, :password_digest, presence: true
 end

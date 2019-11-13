@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module V1
   class CommentsController < ApplicationController
     before_action :init_task
@@ -18,16 +20,20 @@ module V1
 
     private
 
-      def comment_params
-        params.permit(:body, :image)
-      end
+    def serializer
+      CommentSerializer
+    end
 
-      def init_task
-        @task = Task.find(params[:task_id])
-      end
+    def comment_params
+      params.permit(:body, :image)
+    end
 
-      def init_task_comment
-        @comment = @task.comments.find_by!(id: params[:id])
-      end
+    def init_task
+      @task = Task.find(params[:task_id])
+    end
+
+    def init_task_comment
+      @comment = @task.comments.find_by!(id: params[:id])
+    end
   end
 end

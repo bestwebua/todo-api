@@ -1,0 +1,985 @@
+
+
+# Group Authentication
+
+
+## Authentication [/auth]
+
+
+### Sign In [POST /api/auth/sign_in]
+
+
++ Request sign in
+**POST**&nbsp;&nbsp;`/api/auth/sign_in`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "email": "weldon_moriette@runte.io",
+              "password": "abc"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjkzLCJleHAiOjE1NzM3MTMwNzh9.IhJMwypmSTiF-yFdNGMcEdSI8skyHN8V5j0pizeisEA"
+            }
+
++ Request sign in fails
+**POST**&nbsp;&nbsp;`/api/auth/sign_in`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "email": "carey_abernathy@dooley.net",
+              "password": "O2cThJ322gE"
+            }
+
++ Response 401
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Invalid credentials"
+            }
+
+### Sign Out [GET /api/auth/sign_out]
+
+
++ Request sign out
+**GET**&nbsp;&nbsp;`/api/auth/sign_out`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk1LCJleHAiOjE1NzM3MTMwNzh9.hLyqnXahb-8EARGe_tjkWNL-wx1Wfn6B7jvFzVWYCqA
+            Content-Type: application/json
+
++ Response 204
+
+### Sign Up [POST /api/auth]
+
+
++ Request sign up
+**POST**&nbsp;&nbsp;`/api/auth`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "email": "gracia@ritchieconnelly.net",
+              "password": "abc",
+              "password_confirmation": "abc"
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Account created successfully",
+              "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE4LCJleHAiOjE1NzM3MTMwNzh9.KI7G8Ao7_jNL7d1EoGgP1IUww2wr_q24VNJIquCUvug"
+            }
+
++ Request sign up fails
+**POST**&nbsp;&nbsp;`/api/auth`
+
+    + Headers
+
+            Accept: application/v1
+            Content-Type: application/json
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Validation failed: Password can't be blank, Email can't be blank, Password digest can't be blank"
+            }
+
+# Group Comments
+
+
+## Comments [/projects/:id/tasks/:id/comments]
+
+
+### Get comments [GET /api/projects/{project_id}/tasks/{task_id}/comments]
+
++ Parameters
+    + project_id: `1366` (number, required)
+    + task_id: `1403` (number, required)
+
++ Request gets comments
+**GET**&nbsp;&nbsp;`/api/projects/1366/tasks/1403/comments`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk2LCJleHAiOjE1NzM3MTMwNzh9.Umei0BebrCiOJgTdHmFbpiy9MU4WPhOYmHBs3YxeACU
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "494",
+                  "type": "comment",
+                  "attributes": {
+                    "id": 494,
+                    "body": "non",
+                    "img_src": null,
+                    "created_at": "2019-11-13T06:31:18.528Z"
+                  }
+                },
+                {
+                  "id": "495",
+                  "type": "comment",
+                  "attributes": {
+                    "id": 495,
+                    "body": "nostrum",
+                    "img_src": null,
+                    "created_at": "2019-11-13T06:31:18.530Z"
+                  }
+                }
+              ]
+            }
+
+### Create comment [POST /api/projects/{project_id}/tasks/{task_id}/comments]
+
++ Parameters
+    + project_id: `1367` (number, required)
+    + task_id: `1405` (number, required)
+
++ Request create a comment
+**POST**&nbsp;&nbsp;`/api/projects/1367/tasks/1405/comments`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk3LCJleHAiOjE1NzM3MTMwNzh9.ovllH8cG0hIuvULEq6ap3NuFnT_h0fjogOqPCAe5Q9s
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "body": "Comment"
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "498",
+                "type": "comment",
+                "attributes": {
+                  "id": 498,
+                  "body": "Comment",
+                  "img_src": null,
+                  "created_at": "2019-11-13T06:31:18.563Z"
+                }
+              }
+            }
+
++ Request create a comment with image
+**POST**&nbsp;&nbsp;`/api/projects/1368/tasks/1407/comments`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk4LCJleHAiOjE1NzM3MTMwNzh9.XYXreJVwxP3r22cAP-Lv24hFkGDBcBAlN1TpC7xCfg4
+            Content-Type: multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1
+
+    + Body
+
+            {"body":"Comment","image":{"tempfile":"#\u003cFile:0x000056384eee0980\u003e","original_filename":"ror.png","content_type":"","headers":"Content-Disposition: form-data; name=\"image\"; filename=\"ror.png\"\r\nContent-Type: \r\nContent-Length: 24879\r\n"}}
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "501",
+                "type": "comment",
+                "attributes": {
+                  "id": 501,
+                  "body": "Comment",
+                  "img_src": "http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBYdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--467a5416e7c29204d988c2332f56e4ab91b4c53e/ror.png",
+                  "created_at": "2019-11-13T06:31:18.631Z"
+                }
+              }
+            }
+
++ Request create a comment fails
+**POST**&nbsp;&nbsp;`/api/projects/1369/tasks/1409/comments`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMjk5LCJleHAiOjE1NzM3MTMwNzh9.uvjYWhishF5IbMGFueaCfYesPG3u0ZwIeH54KpbV9dc
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "body": null,
+              "image": {
+                "original_filename": "ror.txt",
+                "tempfile": "#<File:0x000056384c122188>",
+                "content_type": null
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Validation failed: Body can't be blank"
+            }
+
+### Delete comment [DELETE /api/projects/{project_id}/tasks/{task_id}/comments/{id}]
+
++ Parameters
+    + project_id: `1370` (number, required)
+    + task_id: `1411` (number, required)
+    + id: `504` (number, required)
+
++ Request delete a comment
+**DELETE**&nbsp;&nbsp;`/api/projects/1370/tasks/1411/comments/504`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAwLCJleHAiOjE1NzM3MTMwNzh9.l7u9JskLWsN9slNEpcPZQ00k1PfWhC6PdcieMpSl3xY
+            Content-Type: application/json
+
++ Response 204
+
+# Group Projects
+
+
+## Projects [/projects]
+
+
+### Get projects [GET /api/projects]
+
+
++ Request gets projects
+**GET**&nbsp;&nbsp;`/api/projects`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAxLCJleHAiOjE1NzM3MTMwNzh9.hJOcNQ-WTcYGAdxfJQI-_c8OSdXNxHpCx85zVyQkOlc
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "1371",
+                  "type": "project",
+                  "attributes": {
+                    "id": 1371,
+                    "title": "est",
+                    "created_at": "2019-11-13T06:31:18.708Z",
+                    "updated_at": "2019-11-13T06:31:18.708Z"
+                  },
+                  "relationships": {
+                    "tasks": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "1372",
+                  "type": "project",
+                  "attributes": {
+                    "id": 1372,
+                    "title": "maxime",
+                    "created_at": "2019-11-13T06:31:18.709Z",
+                    "updated_at": "2019-11-13T06:31:18.709Z"
+                  },
+                  "relationships": {
+                    "tasks": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+
+### Create project [POST /api/projects]
+
+
++ Request create a project
+**POST**&nbsp;&nbsp;`/api/projects`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAyLCJleHAiOjE1NzM3MTMwNzh9.Niohhb1kw1UhM9JQRjenHyJNk-KGFwCrZlIeCDhrVag
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "title": "Project Title",
+              "user_id": 1302
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1375",
+                "type": "project",
+                "attributes": {
+                  "id": 1375,
+                  "title": "Project Title",
+                  "created_at": "2019-11-13T06:31:18.730Z",
+                  "updated_at": "2019-11-13T06:31:18.730Z"
+                },
+                "relationships": {
+                  "tasks": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
++ Request does not create a project
+**POST**&nbsp;&nbsp;`/api/projects`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzAzLCJleHAiOjE1NzM3MTMwNzh9.6jN5Z8oxADjtvOgtVwI1nPEnTVOobNZPK0WEnMNyceU
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "title": null
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Validation failed: Title can't be blank"
+            }
+
+### Read project [GET /api/projects/{id}]
+
++ Parameters
+    + id: `1378` (number, required)
+
++ Request show the project
+**GET**&nbsp;&nbsp;`/api/projects/1378`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA0LCJleHAiOjE1NzM3MTMwNzh9.ktjB-1-o7K7pZNmTKPX5_kDdKS9NoIgo5Xx-93DcDIQ
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1378",
+                "type": "project",
+                "attributes": {
+                  "id": 1378,
+                  "title": "itaque",
+                  "created_at": "2019-11-13T06:31:18.748Z",
+                  "updated_at": "2019-11-13T06:31:18.748Z"
+                },
+                "relationships": {
+                  "tasks": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
++ Request project not found
+**GET**&nbsp;&nbsp;`/api/projects/100`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA1LCJleHAiOjE1NzM3MTMwNzh9.4DjjDHuDRu2r9ye1oh1dZ07u432eajgsZwwEyqRkz3s
+            Content-Type: application/json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Couldn't find Project with 'id'=100"
+            }
+
+### Update project [PATCH /api/projects/{id}]
+
++ Parameters
+    + id: `1382` (number, required)
+
++ Request update a project
+**PATCH**&nbsp;&nbsp;`/api/projects/1382`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA2LCJleHAiOjE1NzM3MTMwNzh9.wXuE_4oZ6xGuoE8FndidWErlTaTQOC5rE9HUEaHMIi4
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "title": "New Title"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1382",
+                "type": "project",
+                "attributes": {
+                  "id": 1382,
+                  "title": "New Title",
+                  "created_at": "2019-11-13T06:31:18.768Z",
+                  "updated_at": "2019-11-13T06:31:18.774Z"
+                },
+                "relationships": {
+                  "tasks": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
+### Delete project [DELETE /api/projects/{id}]
+
++ Parameters
+    + id: `1384` (number, required)
+
++ Request delete a project
+**DELETE**&nbsp;&nbsp;`/api/projects/1384`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA3LCJleHAiOjE1NzM3MTMwNzh9.yafy2WFn7m9YEhlt8nbWSud35CfekbuRz6gvBj0olA0
+            Content-Type: application/json
+
++ Response 204
+
+# Group Tasks
+
+
+## Tasks [/projects/:id/tasks]
+
+
+### Get tasks [GET /api/projects/{project_id}/tasks]
+
++ Parameters
+    + project_id: `1386` (number, required)
+
++ Request gets tasks
+**GET**&nbsp;&nbsp;`/api/projects/1386/tasks`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA4LCJleHAiOjE1NzM3MTMwNzh9.esLKBdRj9qVIoS1VK8Ip0wbLFhriTg6huoeT7AVl5-c
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "1413",
+                  "type": "task",
+                  "attributes": {
+                    "id": 1413,
+                    "name": "ratione",
+                    "done": false,
+                    "deadline": null,
+                    "position": 1,
+                    "created_at": "2019-11-13T06:31:18.794Z",
+                    "updated_at": "2019-11-13T06:31:18.794Z"
+                  },
+                  "relationships": {
+                    "comments": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "1414",
+                  "type": "task",
+                  "attributes": {
+                    "id": 1414,
+                    "name": "fugiat",
+                    "done": false,
+                    "deadline": null,
+                    "position": 2,
+                    "created_at": "2019-11-13T06:31:18.796Z",
+                    "updated_at": "2019-11-13T06:31:18.796Z"
+                  },
+                  "relationships": {
+                    "comments": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+
+### Create task [POST /api/projects/{project_id}/tasks]
+
++ Parameters
+    + project_id: `1387` (number, required)
+
++ Request create a task
+**POST**&nbsp;&nbsp;`/api/projects/1387/tasks`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA5LCJleHAiOjE1NzM3MTMwNzh9.lR7J2Cx8DTOkHmR1BAC1DkcdaBUukSTF1yBp94-xiNY
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "Task Name",
+              "deadline": "2019-11-13T06:31:18.814Z"
+            }
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1417",
+                "type": "task",
+                "attributes": {
+                  "id": 1417,
+                  "name": "Task Name",
+                  "done": false,
+                  "deadline": "2019-11-13",
+                  "position": 3,
+                  "created_at": "2019-11-13T06:31:18.818Z",
+                  "updated_at": "2019-11-13T06:31:18.818Z"
+                },
+                "relationships": {
+                  "comments": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
++ Request does not create a task
+**POST**&nbsp;&nbsp;`/api/projects/1388/tasks`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzEwLCJleHAiOjE1NzM3MTMwNzh9.WaPDNiyUJTMB84qpXXns3y_N_7j9l9jX0tCfinZqkvY
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": null
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Validation failed: Name can't be blank"
+            }
+
+### Read task [GET /api/projects/{project_id}/tasks/{id}]
+
++ Parameters
+    + project_id: `1389` (number, required)
+    + id: `1420` (number, required)
+
++ Request show the task
+**GET**&nbsp;&nbsp;`/api/projects/1389/tasks/1420`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzExLCJleHAiOjE1NzM3MTMwNzh9.Su1mtkBe4hNxWlKsTjQ0I8F8PLX08bi6Ufcj30_GLhQ
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1420",
+                "type": "task",
+                "attributes": {
+                  "id": 1420,
+                  "name": "quod",
+                  "done": false,
+                  "deadline": null,
+                  "position": 1,
+                  "created_at": "2019-11-13T06:31:18.840Z",
+                  "updated_at": "2019-11-13T06:31:18.840Z"
+                },
+                "relationships": {
+                  "comments": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
++ Request task not found
+**GET**&nbsp;&nbsp;`/api/projects/1390/tasks/0`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzEyLCJleHAiOjE1NzM3MTMwNzh9.UM-TFG_wQOdonvzfXgHt1gAV61aNyUbbG5RdrL21AzQ
+            Content-Type: application/json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Couldn't find Task with [WHERE \"tasks\".\"project_id\" = $1 AND \"tasks\".\"id\" = $2]"
+            }
+
+### Update task [PATCH /api/projects/{project_id}/tasks/{id}]
+
++ Parameters
+    + project_id: `1391` (number, required)
+    + id: `1424` (number, required)
+
++ Request update a task
+**PATCH**&nbsp;&nbsp;`/api/projects/1391/tasks/1424`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzEzLCJleHAiOjE1NzM3MTMwNzh9.BGL_RkhYXf5BRvQ_xXZyU_IOZe7U1Ob7QgwP4rPGwDM
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "Task Name",
+              "deadline": "2019-11-13T06:31:18.870Z"
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1424",
+                "type": "task",
+                "attributes": {
+                  "id": 1424,
+                  "name": "Task Name",
+                  "done": false,
+                  "deadline": "2019-11-13",
+                  "position": 1,
+                  "created_at": "2019-11-13T06:31:18.866Z",
+                  "updated_at": "2019-11-13T06:31:18.874Z"
+                },
+                "relationships": {
+                  "comments": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
++ Request update a task fails
+**PATCH**&nbsp;&nbsp;`/api/projects/1392/tasks/1426`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE0LCJleHAiOjE1NzM3MTMwNzh9.4ol1vlsOvy5vcC94lMqWl76GWr1nKhIyodbkHqXAcgA
+            Content-Type: application/json
+
+    + Body
+
+            {
+              "name": "Task Name",
+              "deadline": "2019-11-13T06:31:18.885Z"
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "message": "Can't update record. Task is already done"
+            }
+
+### Delete task [DELETE /api/projects/{project_id}/tasks/{id}]
+
++ Parameters
+    + project_id: `1393` (number, required)
+    + id: `1428` (number, required)
+
++ Request delete a task
+**DELETE**&nbsp;&nbsp;`/api/projects/1393/tasks/1428`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE1LCJleHAiOjE1NzM3MTMwNzh9.FVjw4CDxMb5xh7jQpHL18K850pO26UANrJhuG5yMyxQ
+            Content-Type: application/json
+
++ Response 204
+
+### Complete task [PATCH /api/projects/{project_id}/tasks/{id}/complete]
+
++ Parameters
+    + project_id: `1394` (number, required)
+    + id: `1430` (number, required)
+
++ Request trigger task status
+**PATCH**&nbsp;&nbsp;`/api/projects/1394/tasks/1430/complete`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE2LCJleHAiOjE1NzM3MTMwNzh9.oey6lgdeR21z2eamWtHujqOLsWfeSvqvvMrc5haJ9YQ
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1430",
+                "type": "task",
+                "attributes": {
+                  "id": 1430,
+                  "name": "velit",
+                  "done": true,
+                  "deadline": null,
+                  "position": 1,
+                  "created_at": "2019-11-13T06:31:18.926Z",
+                  "updated_at": "2019-11-13T06:31:18.933Z"
+                },
+                "relationships": {
+                  "comments": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
+### Up task [PATCH /api/projects/{project_id}/tasks/{id}/position]
+
++ Parameters
+    + project_id: `1395` (number, required)
+    + id: `1433` (number, required)
+
++ Request change task position
+**PATCH**&nbsp;&nbsp;`/api/projects/1395/tasks/1433/position`
+
+    + Headers
+
+            Accept: application/v1
+            Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzE3LCJleHAiOjE1NzM3MTMwNzh9.1suvC0rWXSKZN9HmReOFAG4652ytHpq32KQmFOdFses
+            Content-Type: application/json
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "1433",
+                "type": "task",
+                "attributes": {
+                  "id": 1433,
+                  "name": "omnis",
+                  "done": false,
+                  "deadline": null,
+                  "position": 1,
+                  "created_at": "2019-11-13T06:31:18.943Z",
+                  "updated_at": "2019-11-13T06:31:18.954Z"
+                },
+                "relationships": {
+                  "comments": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }

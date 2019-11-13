@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Auth
   class JsonWebTokenService
     HMAC_SECRET = Rails.application.secrets.secret_key_base
@@ -13,13 +15,15 @@ module Auth
         check_secret_key
         body = JWT.decode(token, HMAC_SECRET).first
         HashWithIndifferentAccess.new(body)
-        rescue JWT::DecodeError => error
-          raise ExceptionHandler::InvalidToken, error.message
+      rescue JWT::DecodeError => e
+        raise ExceptionHandler::InvalidToken, e.message
       end
 
       def check_secret_key
-        raise ExceptionHandler::InvalidSecretKey,
-          Auth::MessageService.secret_key_not_assigned unless HMAC_SECRET
+        unless HMAC_SECRET
+          raise ExceptionHandler::InvalidSecretKey,
+                Auth::MessageService.secret_key_not_assigned
+        end
       end
     end
   end

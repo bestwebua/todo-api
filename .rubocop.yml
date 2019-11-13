@@ -1,17 +1,87 @@
-require: rubocop-rspec
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
 
-inherit_gem:
-  rubocop-rails:
-    - config/rails.yml
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - vendor/**/*
+    - spec/fixtures/**/*
+    - tmp/**/*
 
-Style/FrozenStringLiteralComment:
+Rails:
+  Enabled: true
+
+# Style -----------------------------------------------------------------------
+
+Style/Documentation:
   Enabled: false
 
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-  SupportedStyles:
-    - single_quotes
-    - double_quotes
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/**/*
+
+# Metrics ---------------------------------------------------------------------
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*.rb
+    - Rakefile
+    - lib/tasks/**/*.rake
+    - spec/**/*.rb
+    - config/routes.rb
+
+# Layout ----------------------------------------------------------------------
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+    associations:
+      - has_one
+      - has_many
+      - belongs_to
+      - has_and_belongs_to_many
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - associations
+      - public_class_methods
+      - initializer
+      - public_methods
+      - protected_methods
+      - private_methods
+
+# RSpec -----------------------------------------------------------------------
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 22
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5

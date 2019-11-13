@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Auth::AuthorizeRequestService do
+  subject(:request_obj)         { described_class.call(header) }
+
   let(:user)                    { create :user }
   let(:header)                  { { 'Authorization' => token_generator(user.id) } }
-  subject(:invalid_request_obj) { described_class.call }
-  subject(:request_obj)         { described_class.call(header) }
+
+  let(:invalid_request_obj) { described_class.call }
 
   describe '.call' do
     context 'valid request' do
@@ -31,8 +35,9 @@ RSpec.describe Auth::AuthorizeRequestService do
       end
 
       context 'expired token' do
-        let(:header) { { 'Authorization' => expired_token_generator(user.id) } }
         subject(:request_obj) { described_class.call(header) }
+
+        let(:header) { { 'Authorization' => expired_token_generator(user.id) } }
 
         it 'raises ExceptionHandler::ExpiredSignature error' do
           expect { request_obj }.to raise_error(ExceptionHandler::InvalidToken, /Signature has expired/)
@@ -41,8 +46,9 @@ RSpec.describe Auth::AuthorizeRequestService do
     end
 
     context 'fake token' do
-      let(:header) { { 'Authorization' => 'foobar' } }
       subject(:invalid_request_obj) { described_class.call(header) }
+
+      let(:header) { { 'Authorization' => 'foobar' } }
 
       it 'handles JWT::DecodeError' do
         expect { invalid_request_obj }.to raise_error(ExceptionHandler::InvalidToken, /Not enough or too many segments/)

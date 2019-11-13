@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'V1::Projects API', type: :request do
@@ -14,16 +16,15 @@ RSpec.describe 'V1::Projects API', type: :request do
     before { get '/api/projects', headers: headers }
 
     it 'returns projects' do
-      expect(json).not_to be_empty
-      expect(json.size).to eq(2)
+      expect(json).to match_json_schema('projects/index')
     end
 
     it 'returns status code 200' do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     it 'gets projects', :dox do
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -36,24 +37,25 @@ RSpec.describe 'V1::Projects API', type: :request do
       before { post '/api/projects', params: valid_attributes, headers: headers }
 
       it 'creates a project' do
-        expect(json['title']).to eq('Project Title')
+        expect(json).to match_json_schema('projects/create')
       end
 
       it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
 
       it 'create a project', :dox do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
     end
 
     context 'request is invalid' do
       let(:invalid_attributes) { { title: nil }.to_json }
+
       before { post '/api/projects', params: invalid_attributes, headers: headers }
 
       it 'returns status code 422' do
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it 'returns a validation failure message' do
@@ -61,7 +63,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       end
 
       it 'does not create a project', :dox do
-        expect(response).to have_http_status(422)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -73,16 +75,15 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     context 'record exists' do
       it 'returns the project' do
-        expect(json).not_to be_empty
-        expect(json['id']).to eq(project_id)
+        expect(json).to match_json_schema('projects/show')
       end
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'show the project', :dox do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
 
@@ -90,7 +91,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       let(:project_id) { 100 }
 
       it 'returns status code 404' do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
 
       it 'returns a not found message' do
@@ -98,7 +99,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       end
 
       it 'project not found', :dox do
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
     end
   end
@@ -112,15 +113,15 @@ RSpec.describe 'V1::Projects API', type: :request do
       before { patch "/api/projects/#{project_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do
-        expect(response.body).not_to be_empty
+        expect(json).to match_json_schema('projects/update')
       end
 
       it 'returns status code 200' do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'update a project', :dox do
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
   end
@@ -131,11 +132,11 @@ RSpec.describe 'V1::Projects API', type: :request do
     before { delete "/api/projects/#{project_id}", headers: headers }
 
     it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(:no_content)
     end
 
     it 'delete a project', :dox do
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(:no_content)
     end
   end
 end

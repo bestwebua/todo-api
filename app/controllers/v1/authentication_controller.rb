@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module V1
   class AuthenticationController < ApplicationController
     skip_before_action :authorize_request, only: :create
@@ -15,8 +17,8 @@ module V1
 
     private
 
-      def auth_params
-        params.permit(:email, :password)
-      end
+    def auth_params
+      params.permit(:email, :password)
+    end
   end
 end

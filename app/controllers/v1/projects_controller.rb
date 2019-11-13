@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module V1
   class ProjectsController < ApplicationController
     before_action :init_project, only: %i[show update destroy]
@@ -28,12 +30,16 @@ module V1
 
     private
 
-      def project_params
-        params.permit(:title)
-      end
+    def serializer
+      ProjectSerializer
+    end
 
-      def init_project
-        @project = Project.find(params[:id])
-      end
+    def project_params
+      params.permit(:title)
+    end
+
+    def init_project
+      @project = Project.find(params[:id])
+    end
   end
 end
