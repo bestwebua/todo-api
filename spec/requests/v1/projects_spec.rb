@@ -33,7 +33,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     let(:valid_attributes) { { title: 'Project Title', user_id: user.id }.to_json }
 
-    context 'request is valid' do
+    context 'when request is valid' do
       before { post '/api/projects', params: valid_attributes, headers: headers }
 
       it 'creates a project' do
@@ -49,7 +49,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       end
     end
 
-    context 'request is invalid' do
+    context 'when request is invalid' do
       let(:invalid_attributes) { { title: nil }.to_json }
 
       before { post '/api/projects', params: invalid_attributes, headers: headers }
@@ -73,7 +73,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     before { get "/api/projects/#{project_id}", headers: headers }
 
-    context 'record exists' do
+    context 'when record exists' do
       it 'returns the project' do
         expect(json).to match_json_schema('projects/show')
       end
@@ -87,7 +87,7 @@ RSpec.describe 'V1::Projects API', type: :request do
       end
     end
 
-    context 'record does not exist' do
+    context 'when record does not exist' do
       let(:project_id) { 100 }
 
       it 'returns status code 404' do
@@ -109,7 +109,7 @@ RSpec.describe 'V1::Projects API', type: :request do
 
     let(:valid_attributes) { { title: 'New Title' }.to_json }
 
-    context 'record exists' do
+    context 'when record exists' do
       before { patch "/api/projects/#{project_id}", params: valid_attributes, headers: headers }
 
       it 'updates the record' do

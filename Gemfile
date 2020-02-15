@@ -41,7 +41,7 @@ group :test do
   gem 'json_matchers', '~> 0.11.1', require: 'json_matchers/rspec'
   gem 'rspec_file_chef', '~> 0.1.2'
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
-   gem 'simplecov', '~> 0.17.1', require: false
+  gem 'simplecov', '~> 0.17.1', require: false
   gem 'simplecov-lcov', '~> 0.7.0', require: false
   gem 'undercover', '~> 0.3.2', require: false
 end

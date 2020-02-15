@@ -21,7 +21,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
     before { get "/api/projects/#{project_id}/tasks", headers: headers }
 
-    context 'project exists' do
+    context 'when project exists' do
       it 'returns all project tasks' do
         expect(json).to match_json_schema('tasks/index')
       end
@@ -35,7 +35,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'project does not exist' do
+    context 'when project does not exist' do
       let(:project_id) { 0 }
 
       it 'returns status code 404' do
@@ -51,7 +51,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
   describe 'POST /api/projects/:project_id/tasks' do
     include Docs::V1::Tasks::Create
 
-    context 'request is valid' do
+    context 'when request is valid' do
       before { post "/api/projects/#{project_id}/tasks", params: valid_attributes, headers: headers }
 
       it 'creates the task' do
@@ -67,7 +67,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'request is invalid' do
+    context 'when request is invalid' do
       before do
         post "/api/projects/#{project_id}/tasks", params: { name: nil }.to_json, headers: headers
       end
@@ -91,7 +91,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
     before { get "/api/projects/#{project_id}/tasks/#{id}", headers: headers }
 
-    context 'project task exists' do
+    context 'when project task exists' do
       it 'returns the task' do
         expect(json).to match_json_schema('tasks/show')
       end
@@ -105,7 +105,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'project task does not exist' do
+    context 'when project task does not exist' do
       let(:id) { 0 }
 
       it 'returns status code 404' do
@@ -125,10 +125,10 @@ RSpec.describe 'V1::Tasks API', type: :request do
   describe 'PATCH /api/projects/:project_id/tasks/:id' do
     include Docs::V1::Tasks::Update
 
-    context 'task exists' do
+    context 'when task exists' do
       before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
 
-      context 'task incomplete' do
+      context 'when task incomplete' do
         it 'updates the task' do
           expect(json).to match_json_schema('tasks/update')
         end
@@ -142,7 +142,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
         end
       end
 
-      context 'task complete' do
+      context 'when task complete' do
         before do
           patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers
           patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers
@@ -162,7 +162,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'task does not exist' do
+    context 'when task does not exist' do
       let(:id) { 0 }
 
       before { patch "/api/projects/#{project_id}/tasks/#{id}", params: valid_attributes, headers: headers }
@@ -196,7 +196,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
     before { patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
 
-    context 'mark as complete' do
+    context 'when mark as complete' do
       it 'returns status code 200' do
         expect(response).to have_http_status(:ok)
       end
@@ -210,7 +210,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'mark as incomplete' do
+    context 'when mark as incomplete' do
       before { patch "/api/projects/#{project_id}/tasks/#{id}/complete", headers: headers }
 
       it 'returns status code 200' do
@@ -228,7 +228,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
 
     let(:move_up_position) { patch "/api/projects/#{project_id}/tasks/#{next_id}/position", headers: headers }
 
-    context 'shift all tasks positions' do
+    context 'when shift all tasks positions' do
       let(:move_up_position_with_reload) do
         move_up_position
         updated_task.reload
@@ -244,7 +244,7 @@ RSpec.describe 'V1::Tasks API', type: :request do
       end
     end
 
-    context 'current task position changed' do
+    context 'when current task position changed' do
       before { move_up_position }
 
       it 'returns status code 200' do

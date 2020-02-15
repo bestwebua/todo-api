@@ -15,15 +15,16 @@ module Auth
         check_secret_key
         body = JWT.decode(token, HMAC_SECRET).first
         HashWithIndifferentAccess.new(body)
-      rescue JWT::DecodeError => e
-        raise ExceptionHandler::InvalidToken, e.message
+      rescue JWT::DecodeError => error
+        raise ExceptionHandler::InvalidToken, error.message
       end
 
+      private
+
       def check_secret_key
-        unless HMAC_SECRET
-          raise ExceptionHandler::InvalidSecretKey,
-                Auth::MessageService.secret_key_not_assigned
-        end
+        return if HMAC_SECRET
+
+        raise ExceptionHandler::InvalidSecretKey, Auth::MessageService.secret_key_not_assigned
       end
     end
   end

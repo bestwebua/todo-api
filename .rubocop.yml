@@ -11,9 +11,6 @@ AllCops:
     - spec/fixtures/**/*
     - tmp/**/*
 
-Rails:
-  Enabled: true
-
 # Style -----------------------------------------------------------------------
 
 Style/Documentation:
@@ -22,9 +19,11 @@ Style/Documentation:
 Style/ParallelAssignment:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Exclude:
-    - app/controllers/**/*
+Style/DoubleNegation:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
 
 # Metrics ---------------------------------------------------------------------
 
@@ -40,12 +39,6 @@ Metrics/BlockLength:
     - config/routes.rb
 
 # Layout ----------------------------------------------------------------------
-
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-
-Layout/IndentFirstArrayElement:
-  EnforcedStyle: consistent
 
 Layout/ClassStructure:
   Enabled: true
@@ -69,6 +62,17 @@ Layout/ClassStructure:
       - protected_methods
       - private_methods
 
+# Rails -----------------------------------------------------------------------
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
 # RSpec -----------------------------------------------------------------------
 
 RSpec/MultipleExpectations:
@@ -85,3 +89,12 @@ RSpec/MessageChain:
 
 RSpec/NestedGroups:
   Max: 5
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Enabled: false
