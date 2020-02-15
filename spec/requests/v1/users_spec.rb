@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'V1::User API', type: :request do
@@ -10,11 +12,11 @@ RSpec.describe 'V1::User API', type: :request do
   describe 'POST /api/auth' do
     include Docs::V1::Authentication::SignUp
 
-    context 'valid request' do
+    context 'when valid request' do
       before { post '/api/auth', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new user' do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
 
       it 'returns success message' do
@@ -26,16 +28,16 @@ RSpec.describe 'V1::User API', type: :request do
       end
 
       it 'sign up', :dox do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(:created)
       end
     end
 
     describe 'invalid request' do
-      context 'invalid auth data' do
+      context 'when invalid auth data' do
         before { post '/api/auth', params: {}, headers: headers }
 
         it 'does not create a new user' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns failure message' do
@@ -43,11 +45,11 @@ RSpec.describe 'V1::User API', type: :request do
         end
 
         it 'sign up fails', :dox do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
       end
 
-      context 'passwords do not match' do
+      context 'when passwords do not match' do
         let(:different_passwords) do
           valid_attributes.merge(password_confirmation: user.password.reverse)
         end
@@ -55,7 +57,7 @@ RSpec.describe 'V1::User API', type: :request do
         before { post '/api/auth', params: different_passwords.to_json, headers: headers }
 
         it 'does not create a new user' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns failure message' do
@@ -63,13 +65,13 @@ RSpec.describe 'V1::User API', type: :request do
         end
       end
 
-      context 'user with same the email exists' do
+      context 'when user with same the email exists' do
         before do
           2.times { post '/api/auth', params: valid_attributes.to_json, headers: headers }
         end
 
         it 'does not create a new user' do
-          expect(response).to have_http_status(422)
+          expect(response).to have_http_status(:unprocessable_entity)
         end
 
         it 'returns failure message' do
@@ -77,13 +79,13 @@ RSpec.describe 'V1::User API', type: :request do
         end
       end
 
-      context 'secret key not assigned' do
+      context 'when secret key not assigned' do
         before do
           stub_const('Auth::JsonWebTokenService::HMAC_SECRET', nil)
           post '/api/auth', params: valid_attributes.to_json, headers: headers
         end
 
-        specify { expect(response).to have_http_status(500) }
+        specify { expect(response).to have_http_status(:internal_server_error) }
         specify { expect(json['message']).to match(/secret_key_base not assigned/) }
       end
     end

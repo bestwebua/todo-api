@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class VersionService
     attr_reader :version, :default
@@ -12,9 +14,9 @@ module Api
 
     private
 
-      def check_headers(headers)
-        accept = headers[:accept]
-        accept && accept.include?("application/#{version}")
-      end
+    def check_headers(headers)
+      accept = headers[:accept]
+      accept&.include?("application/#{version}")
+    end
   end
 end

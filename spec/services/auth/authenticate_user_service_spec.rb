@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Auth::AuthenticateUserService do
-  let(:user)                 { create :user, sign_out: true }
   subject(:invalid_auth_obj) { described_class.call(email: '', password: '') }
 
-  subject(:valid_auth_obj) do
+  let(:valid_auth_obj) do
     described_class.call(email: user.email, password: user.password)
     user.reload
   end
 
+  let(:user) { create :user, sign_out: true }
+
   describe '.call' do
-    context 'valid credentials' do
+    context 'when valid credentials' do
       it 'user sign_out status should be false' do
         expect { valid_auth_obj }.to change(user, :sign_out)
       end
@@ -20,7 +23,7 @@ RSpec.describe Auth::AuthenticateUserService do
       end
     end
 
-    context 'invalid credentials' do
+    context 'when invalid credentials' do
       specify do
         expect { invalid_auth_obj }.to raise_error(ExceptionHandler::AuthenticationError, /Invalid credentials/)
       end

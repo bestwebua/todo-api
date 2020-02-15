@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe V1::ApplicationController, type: :controller do
-  let!(:user) { create(:user) }
+  it { expect(described_class).to be < ActionController::API }
 
   describe '#authorize_request' do
-    context 'auth token is passed' do
+    let!(:user) { create(:user) }
+
+    context 'when auth token is passed' do
       before { allow(request).to receive(:headers).and_return(valid_headers) }
 
       it 'sets the current user' do
@@ -12,7 +16,7 @@ RSpec.describe V1::ApplicationController, type: :controller do
       end
     end
 
-    context 'auth token is not passed' do
+    context 'when auth token is not passed' do
       before { allow(request).to receive(:headers).and_return(invalid_headers) }
 
       it 'raises MissingToken error' do

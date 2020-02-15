@@ -1,9 +1,19 @@
+# frozen_string_literal: true
+
+require 'simplecov'
 require 'spec_helper'
-require 'dox'
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
+
+%w[docs support].each do |dir|
+  Dir[Rails.root.join('spec', dir, '**', '*.rb')].each do |file|
+    require file unless file[/\A.+_spec\.rb\z/]
+  end
+end
+
 abort('The Rails environment is running in production mode!') if Rails.env.production?
+
 require 'rspec/rails'
 
 begin
@@ -13,43 +23,17 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
-
-Dir[Rails.root.join('spec/docs/**/*.rb')].each { |file| require file }
-
-Dox.configure do |config|
-  config.header_file_path = Rails.root.join('spec/docs/v1/descriptions/header.md')
-  config.desc_folder_path = Rails.root.join('spec/docs/v1/descriptions')
-  config.headers_whitelist = ['Accept', 'Authorization']
-end
+Rails.application.load_tasks
+Rake::Task['factory_bot:lint'].invoke
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.infer_base_class_for_anonymous_controllers = false
+
   config.include FactoryBot::Syntax::Methods
   config.include RequestSpecHelper
   config.include ControllerSpecHelper
-
-  config.after(:each, :dox) do |example|
-    example.metadata[:request] =
-      if request.headers['CONTENT_TYPE']&.include?('multipart/form-data; boundary=')
-        patched_request = request.dup
-        def patched_request.body
-          OpenStruct.new(read: request_parameters.to_json)
-        end
-        patched_request
-      else
-        request
-      end
-      example.metadata[:response] = response
-  end
 end

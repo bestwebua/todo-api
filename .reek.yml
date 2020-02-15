@@ -1,0 +1,47 @@
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
+  UncommunicativeModuleName:
+    accept:
+      - V1
+
+  UncommunicativeMethodName:
+    exclude:
+      - ExceptionHandler#error_401
+      - ExceptionHandler#error_404
+      - ExceptionHandler#error_422
+      - ExceptionHandler#error_500
+
+  NestedIterators:
+    max_allowed_nesting: 2
+
+  NilCheck:
+    exclude:
+      - Api::VersionService#check_headers
+      - Auth::AuthenticateUserService#user
+
+  UtilityFunction:
+    exclude:
+      - ControllerSpecHelper#expired_token_generator
+      - ControllerSpecHelper#invalid_headers
+      - ControllerSpecHelper#token_generator
+
+  LongParameterList:
+    max_params: 6
+
+  BooleanParameter:
+    exclude:
+      - Api::VersionService#initialize
+
+directories:
+  'spec/support/helpers':
+    UtilityFunction:
+      enabled: false
+    ControlParameter:
+      enabled: false
+    NilCheck:
+      enabled: false
+
+exclude_paths:
+  - db/

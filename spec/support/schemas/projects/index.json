@@ -1,0 +1,127 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "array",
+      "title": "The Data Schema",
+      "items": {
+        "$id": "#/properties/data/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "id",
+          "type",
+          "attributes",
+          "relationships"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#/properties/data/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "673"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "type": {
+            "$id": "#/properties/data/items/properties/type",
+            "type": "string",
+            "title": "The Type Schema",
+            "default": "",
+            "examples": [
+              "project"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "attributes": {
+            "$id": "#/properties/data/items/properties/attributes",
+            "type": "object",
+            "title": "The Attributes Schema",
+            "required": [
+              "id",
+              "title",
+              "created_at",
+              "updated_at"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/data/items/properties/attributes/properties/id",
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [
+                  673
+                ]
+              },
+              "title": {
+                "$id": "#/properties/data/items/properties/attributes/properties/title",
+                "type": "string",
+                "title": "The Title Schema",
+                "default": "",
+                "examples": [
+                  "aut"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "created_at": {
+                "$id": "#/properties/data/items/properties/attributes/properties/created_at",
+                "type": "string",
+                "title": "The Created_at Schema",
+                "default": "",
+                "examples": [
+                  "2019-11-11T06:43:41.637Z"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "updated_at": {
+                "$id": "#/properties/data/items/properties/attributes/properties/updated_at",
+                "type": "string",
+                "title": "The Updated_at Schema",
+                "default": "",
+                "examples": [
+                  "2019-11-11T06:43:41.637Z"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "relationships": {
+            "$id": "#/properties/data/items/properties/relationships",
+            "type": "object",
+            "title": "The Relationships Schema",
+            "required": [
+              "tasks"
+            ],
+            "properties": {
+              "tasks": {
+                "$id": "#/properties/data/items/properties/relationships/properties/tasks",
+                "type": "object",
+                "title": "The Tasks Schema",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "$id": "#/properties/data/items/properties/relationships/properties/tasks/properties/data",
+                    "type": "array",
+                    "title": "The Data Schema"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
